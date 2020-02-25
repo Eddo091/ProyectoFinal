@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal
 {
-    public partial class Form1 : Form
+    public partial class Alumn : Form
     {
         Conexion objConexion = new Conexion();
         int posicion = 0;
@@ -18,12 +18,12 @@ namespace ProyectoFinal
         DataSet ds = new DataSet();
         DataTable tbl = new DataTable();
 
-        public Form1()
+        public Alumn()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Alumn_Load(object sender, EventArgs e)
         {
             actualizarDs();
             mostrar_datos();
@@ -31,20 +31,20 @@ namespace ProyectoFinal
         void actualizarDs()
         {
             ds.Clear();
-            ds = objConexion.obtener_datos();
-            tbl = ds.Tables["alumnos"];
-            tbl.PrimaryKey = new DataColumn[] { tbl.Columns["codAlumno"] };
+            ds = objConexion.obtener_materias();
+            tbl = ds.Tables["materias"];
+            tbl.PrimaryKey = new DataColumn[] { tbl.Columns["idMateria"] };
         }
+
 
         void mostrar_datos()
         {
-            lblcodAlumno.Text = tbl.Rows[posicion].ItemArray[0].ToString();
-            txtNombre.Text = tbl.Rows[posicion].ItemArray[1].ToString();
-            txtDireccion.Text = tbl.Rows[posicion].ItemArray[2].ToString();
-            txtTelefono.Text = tbl.Rows[posicion].ItemArray[3].ToString();
-            txtcodCarrera.Text = tbl.Rows[posicion].ItemArray[4].ToString();
-            txtcodFacultad.Text = tbl.Rows[posicion].ItemArray[5].ToString();
-            txtcodMatricula.Text = tbl.Rows[posicion].ItemArray[6].ToString();
+            lblidMateria.Text = tbl.Rows[posicion].ItemArray[0].ToString();
+            txtCodigo.Text = tbl.Rows[posicion].ItemArray[1].ToString();
+            txtMateria.Text = tbl.Rows[posicion].ItemArray[2].ToString();
+            txtUV.Text = tbl.Rows[posicion].ItemArray[3].ToString();
+            txtPrerrequisito.Text = tbl.Rows[posicion].ItemArray[4].ToString();
+            txtnumOrden.Text = tbl.Rows[posicion].ItemArray[5].ToString();
 
             lblnregistros.Text = (posicion + 1) + " de " + tbl.Rows.Count;
         }
@@ -90,25 +90,25 @@ namespace ProyectoFinal
         }
         void limpiar_cajas()
         {
-            txtNombre.Text = "";
-            txtDireccion.Text = "";
-            txtTelefono.Text = "";
-            txtcodCarrera.Text = "";
-            txtcodFacultad.Text = "";
-            txtcodMatricula.Text = "";
+            txtCodigo.Text = "";
+            txtMateria.Text = "";
+            txtUV.Text = "";
+            txtPrerrequisito.Text = "";
+            txtnumOrden.Text = "";
         }
+
         void controles(Boolean valor)
         {
-            grbNavegacionAlumnos.Enabled = valor;
+            grbNavegacionMaterias.Enabled = valor;
             btneliminar.Enabled = valor;
             btnbuscar.Enabled = valor;
-            grbDatosAlumnos.Enabled = !valor;
+            grbDatosMaterias.Enabled = !valor;
 
         }
 
         private void btnagregar_Click(object sender, EventArgs e)
         {
-            if (  btnagregar.Text == "nuevo")
+            if (btnagregar.Text == "nuevo")
             {//boton de nuevo
                 btnagregar.Tag = "guardar";
                 btnmodificar.Tag = "cancelar";
@@ -124,15 +124,14 @@ namespace ProyectoFinal
             else
             { //boton de guardar
                 String[] valores = {
-                    lblcodAlumno.Text,
-                    txtNombre.Text,
-                    txtDireccion.Text,
-                    txtTelefono.Text,
-                    txtcodCarrera.Text,
-                    txtcodFacultad.Text,
-                    txtcodMatricula.Text
+                    lblidMateria.Text,
+                    txtCodigo.Text,
+                    txtMateria.Text,
+                    txtUV.Text,
+                    txtPrerrequisito.Text,
+                    txtnumOrden.Text,
                 };
-                objConexion.mantenimiento_datos(valores, accion);
+                objConexion.mantenimiento_datos1(valores, accion);
                 actualizarDs();
                 posicion = tbl.Rows.Count - 1;
                 mostrar_datos();
@@ -176,10 +175,10 @@ namespace ProyectoFinal
 
         private void btneliminar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Esta seguro de eliminar a " + txtNombre.Text, "Registro de Clientes", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            if (MessageBox.Show("Esta seguro de eliminar a " + txtMateria.Text, "Registro de Clientes", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
             {
-                String[] valores = { lblcodAlumno.Text };
-                objConexion.mantenimiento_datos(valores, "eliminar");
+                String[] valores = { lblidMateria.Text };
+                objConexion.mantenimiento_datos1(valores, "eliminar");
                 actualizarDs();
                 posicion = posicion > 0 ? posicion - 1 : 0;
                 mostrar_datos();
@@ -187,28 +186,14 @@ namespace ProyectoFinal
             }
         }
 
-        private void btnMaterias_Click(object sender, EventArgs e)
-        {
-           Alumn frmMaterias = new Alumn();
-
-            frmMaterias.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Matricula frmMatricula = new Matricula();
-
-            frmMatricula.ShowDialog();
-        }
-
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            busqueda_alumnos frmBusquedaAlumnos = new busqueda_alumnos();
-            frmBusquedaAlumnos.ShowDialog();
+            busqueda_materias frmBusquedaMaterias = new busqueda_materias();
+            frmBusquedaMaterias.ShowDialog();
 
-            if (frmBusquedaAlumnos._codAlumno > 0)
+            if (frmBusquedaMaterias._idMateria > 0)
             {
-                posicion = tbl.Rows.IndexOf(tbl.Rows.Find(frmBusquedaAlumnos._codAlumno));
+                posicion = tbl.Rows.IndexOf(tbl.Rows.Find(frmBusquedaMaterias._idMateria));
                 mostrar_datos();
             }
         }
