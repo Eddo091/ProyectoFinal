@@ -196,9 +196,19 @@ namespace ProyectoFinal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Matricula frmMatricula = new Matricula();
+            try
+            {
+                Matricula frmMatricula = new Matricula();
 
-            frmMatricula.ShowDialog();
+                frmMatricula.ShowDialog();
+            }
+            catch (Exception error) {
+                MessageBox.Show("No compila" + error.Message, "Matricula",
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
+
         }
 
         private void btnbuscar_Click(object sender, EventArgs e)

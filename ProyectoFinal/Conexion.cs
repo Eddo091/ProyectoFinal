@@ -152,6 +152,6 @@ namespace ProyectoFinal
             comandoSQL.ExecuteNonQuery();
         }
     }
-    //prueba
+    
 }
 

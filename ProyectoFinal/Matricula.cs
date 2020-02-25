@@ -37,12 +37,16 @@ namespace ProyectoFinal
         }
         void mostrar_datos()
         {
-            lblMatricula.Text = tbl.Rows[posicion].ItemArray[0].ToString();
-            txtPago.Text = tbl.Rows[posicion].ItemArray[1].ToString();
-            txtcodCarrer.Text = tbl.Rows[posicion].ItemArray[2].ToString();
-            txtnombr.Text = tbl.Rows[posicion].ItemArray[3].ToString();
-
-            lblMatricula.Text = (posicion + 1) + " de " + tbl.Rows.Count;
+            try {
+                lblMatricula.Text = (posicion + 1) + " de " + tbl.Rows.Count; //Acá dá error
+                txtPago.Text = tbl.Rows[posicion].ItemArray[1].ToString();
+                txtcodCarrer.Text = tbl.Rows[posicion].ItemArray[2].ToString();
+                txtnombr.Text = tbl.Rows[posicion].ItemArray[3].ToString();
+                lblMatricula.Text = tbl.Rows[posicion].ItemArray[0].ToString();
+            } catch { MessageBox.Show("Error"); } 
+            //Daba error porque segun no hay datos de matricula, opino yo debido a ello le puse el try
+            
+            
         }
         void limpiar_cajas()
         {
