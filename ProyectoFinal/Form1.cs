@@ -203,7 +203,7 @@ namespace ProyectoFinal
                 frmMatricula.ShowDialog();
             }
             catch (Exception error) {
-                MessageBox.Show("No compila" + error.Message, "Matricula",
+                MessageBox.Show( error.Message, "Matricula",
                      MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             

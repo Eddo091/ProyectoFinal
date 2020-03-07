@@ -6,7 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace ProyectoFinal
 {
@@ -17,11 +20,21 @@ namespace ProyectoFinal
         string accion = "";
         DataSet ds = new DataSet();
         DataTable tbl = new DataTable();
-
+        SqlCommand comandoSQL = new SqlCommand();
+        SqlConnection miConexion = new SqlConnection();
         public Matricula()
         {
             InitializeComponent();
         }
+
+        private void Parametos_alumnos()
+        {
+            comandoSQL.Parameters.Add("@IdM", SqlDbType.Int).Value = 0;
+            comandoSQL.Parameters.Add("@Pago", SqlDbType.NChar).Value = "";
+            comandoSQL.Parameters.Add("@CodCm", SqlDbType.NChar).Value = "";
+            comandoSQL.Parameters.Add("@NomA", SqlDbType.NChar).Value = "";
+        }
+
 
         private void Matricula_Load(object sender, EventArgs e)
         {
@@ -37,16 +50,23 @@ namespace ProyectoFinal
         }
         void mostrar_datos()
         {
-            try {
-                lblMatricula.Text = (posicion + 1) + " de " + tbl.Rows.Count; //Acá dá error
-                txtPago.Text = tbl.Rows[posicion].ItemArray[1].ToString();
-                txtcodCarrer.Text = tbl.Rows[posicion].ItemArray[2].ToString();
-                txtnombr.Text = tbl.Rows[posicion].ItemArray[3].ToString();
+            try
+            {
                 lblMatricula.Text = tbl.Rows[posicion].ItemArray[0].ToString();
-            } catch { MessageBox.Show("Error"); } 
+                lblMatricula.Text = (posicion + 1) + " de " + tbl.Rows.Count.ToString(); //Acá dá error
+                txtPago.Text = tbl.Rows[posicion].ItemArray[2].ToString();
+                txtcodCarrer.Text = tbl.Rows[posicion].ItemArray[3].ToString();
+                txtnombr.Text = tbl.Rows[posicion].ItemArray[4].ToString();
+
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("tbl error " + error.Message, "Matricula",
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             //Daba error porque segun no hay datos de matricula, opino yo debido a ello le puse el try
-            
-            
+
+
         }
         void limpiar_cajas()
         {
@@ -61,6 +81,36 @@ namespace ProyectoFinal
             btnbuscar.Enabled = valor;
             grbDatosMatricula.Enabled = !valor;
 
+        }
+        public void mantenimiento_datos(String[] valores, String accion)
+        {
+            String sql = "";
+            if (accion == "nuevo")
+            {
+                sql = "INSERT INTO materias (IdMatricula,Pago,codcarrera,NombreAlumno) VALUES(@IdM,@Pago,@codCm,@NomA)";
+            }
+            else if (accion == "modificar")
+            {
+                sql = "UPDATE materias SET Pago=@Pago, codcarrera=@codCm, NombreAlumno=@NomA, WHERE IdMatricula=@IdM";
+            }
+            else if (accion == "eliminar")
+            {
+                sql = "DELETE alumnos FROM materias WHERE IdMatricula=@IdM";
+
+            }
+            if (valores.Length > 1)
+            {
+                comandoSQL.Parameters["@IdM"].Value = valores[0];
+                comandoSQL.Parameters["@Pago"].Value = valores[2];
+                comandoSQL.Parameters["@CodCm"].Value = valores[3];
+                comandoSQL.Parameters["@NomA"].Value = valores[4];
+            }
+
+            else
+            {
+                comandoSQL.Parameters["@IdM"].Value = valores[0];
+            }
+            procesarSQL(sql);
         }
 
         private void btnagregar_Click(object sender, EventArgs e)
@@ -184,12 +234,21 @@ namespace ProyectoFinal
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            /*if (frmBuscar._idCliente > 0)
-           {
-               posicion = tbl.Rows.IndexOf(tbl.Rows.Find(frmBuscar._idCliente));
-               mostrar_datos();*/
-            MessageBox.Show("Hecho,pero no hay base",
-           "Error:", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            busqueda_materias frmBuscar = new busqueda_materias();
+            if (frmBuscar._idMateria > 0)
+            {
+                posicion = tbl.Rows.IndexOf(tbl.Rows.Find(frmBuscar._idMateria));
+                mostrar_datos();
+                MessageBox.Show("Hecho,pero no hay base",
+               "Error:", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+        void procesarSQL(String sql)
+        {
+            comandoSQL.Connection = miConexion;
+            comandoSQL.CommandText = sql;
+            comandoSQL.ExecuteNonQuery();
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data; //Libreria de acceso a datos.
+using System.IO;
 using System.Data.SqlClient;//libreria para conectarse al SQL Server...
 
 
@@ -26,6 +27,7 @@ namespace ProyectoFinal
 
             Parametos_alumnos();
             Parametos_materias();
+            
         }
         public DataSet obtener_datos()
         {
@@ -61,8 +63,7 @@ namespace ProyectoFinal
             return ds;
         }
         private void Parametos_alumnos()
-        {//Pone las N fast:'v ejecutalo xd hazlo tu y siente el poder de mi master va laguiado:'v haha xd voyyyyy
-            //como asi vos morro 
+        {
             comandoSQL.Parameters.Add("@codA", SqlDbType.Int).Value = 0;
             comandoSQL.Parameters.Add("@Nom", SqlDbType.NChar).Value = "";
             comandoSQL.Parameters.Add("@Dir", SqlDbType.NChar).Value = "";

@@ -1,6 +1,6 @@
 ﻿namespace ProyectoFinal
 {
-    partial class Matricula
+    partial class Inscrip
     {
         /// <summary>
         /// Required designer variable.
@@ -35,8 +35,7 @@
             this.txtcodCarrer = new System.Windows.Forms.TextBox();
             this.lblcodCarrrer = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.grbMtoMatricula = new System.Windows.Forms.GroupBox();
-            this.lblMatricula = new System.Windows.Forms.Label();
+            this.grbMtoInscrip = new System.Windows.Forms.GroupBox();
             this.grbNavegacionmatricula = new System.Windows.Forms.GroupBox();
             this.lblnregistros = new System.Windows.Forms.Label();
             this.btnultimo = new System.Windows.Forms.Button();
@@ -48,7 +47,7 @@
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnagregar = new System.Windows.Forms.Button();
             this.grbDatosMatricula.SuspendLayout();
-            this.grbMtoMatricula.SuspendLayout();
+            this.grbMtoInscrip.SuspendLayout();
             this.grbNavegacionmatricula.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,10 +60,10 @@
             this.grbDatosMatricula.Controls.Add(this.lblcodCarrrer);
             this.grbDatosMatricula.Controls.Add(this.lblNombre);
             this.grbDatosMatricula.Enabled = false;
-            this.grbDatosMatricula.Location = new System.Drawing.Point(12, 62);
+            this.grbDatosMatricula.Location = new System.Drawing.Point(12, 49);
             this.grbDatosMatricula.Name = "grbDatosMatricula";
             this.grbDatosMatricula.Size = new System.Drawing.Size(283, 143);
-            this.grbDatosMatricula.TabIndex = 25;
+            this.grbDatosMatricula.TabIndex = 28;
             this.grbDatosMatricula.TabStop = false;
             this.grbDatosMatricula.Text = "Datos de Matricula";
             // 
@@ -80,9 +79,9 @@
             this.lblPago.AutoSize = true;
             this.lblPago.Location = new System.Drawing.Point(6, 28);
             this.lblPago.Name = "lblPago";
-            this.lblPago.Size = new System.Drawing.Size(35, 13);
+            this.lblPago.Size = new System.Drawing.Size(80, 13);
             this.lblPago.TabIndex = 6;
-            this.lblPago.Text = "Pago ";
+            this.lblPago.Text = "Nº de Matricula";
             // 
             // txtnombr
             // 
@@ -103,9 +102,9 @@
             this.lblcodCarrrer.AutoSize = true;
             this.lblcodCarrrer.Location = new System.Drawing.Point(6, 69);
             this.lblcodCarrrer.Name = "lblcodCarrrer";
-            this.lblcodCarrrer.Size = new System.Drawing.Size(40, 13);
+            this.lblcodCarrrer.Size = new System.Drawing.Size(93, 13);
             this.lblcodCarrrer.TabIndex = 7;
-            this.lblcodCarrrer.Text = "Codigo";
+            this.lblcodCarrrer.Text = "Codigo de Materia";
             // 
             // lblNombre
             // 
@@ -116,28 +115,18 @@
             this.lblNombre.TabIndex = 8;
             this.lblNombre.Text = "Nombre del alumno";
             // 
-            // grbMtoMatricula
+            // grbMtoInscrip
             // 
-            this.grbMtoMatricula.Controls.Add(this.btnbuscar);
-            this.grbMtoMatricula.Controls.Add(this.btneliminar);
-            this.grbMtoMatricula.Controls.Add(this.btnmodificar);
-            this.grbMtoMatricula.Controls.Add(this.btnagregar);
-            this.grbMtoMatricula.Location = new System.Drawing.Point(304, 62);
-            this.grbMtoMatricula.Name = "grbMtoMatricula";
-            this.grbMtoMatricula.Size = new System.Drawing.Size(266, 100);
-            this.grbMtoMatricula.TabIndex = 24;
-            this.grbMtoMatricula.TabStop = false;
-            this.grbMtoMatricula.Text = "Mantenimiento de matricula";
-            // 
-            // lblMatricula
-            // 
-            this.lblMatricula.AutoSize = true;
-            this.lblMatricula.Location = new System.Drawing.Point(318, 22);
-            this.lblMatricula.Name = "lblMatricula";
-            this.lblMatricula.Size = new System.Drawing.Size(35, 13);
-            this.lblMatricula.TabIndex = 23;
-            this.lblMatricula.Text = "label1";
-            this.lblMatricula.Visible = false;
+            this.grbMtoInscrip.Controls.Add(this.btnbuscar);
+            this.grbMtoInscrip.Controls.Add(this.btneliminar);
+            this.grbMtoInscrip.Controls.Add(this.btnmodificar);
+            this.grbMtoInscrip.Controls.Add(this.btnagregar);
+            this.grbMtoInscrip.Location = new System.Drawing.Point(304, 49);
+            this.grbMtoInscrip.Name = "grbMtoInscrip";
+            this.grbMtoInscrip.Size = new System.Drawing.Size(266, 100);
+            this.grbMtoInscrip.TabIndex = 27;
+            this.grbMtoInscrip.TabStop = false;
+            this.grbMtoInscrip.Text = "Inscripcion";
             // 
             // grbNavegacionmatricula
             // 
@@ -146,10 +135,10 @@
             this.grbNavegacionmatricula.Controls.Add(this.btnsiguiente);
             this.grbNavegacionmatricula.Controls.Add(this.btnanterior);
             this.grbNavegacionmatricula.Controls.Add(this.btnprimero);
-            this.grbNavegacionmatricula.Location = new System.Drawing.Point(304, 182);
+            this.grbNavegacionmatricula.Location = new System.Drawing.Point(304, 169);
             this.grbNavegacionmatricula.Name = "grbNavegacionmatricula";
             this.grbNavegacionmatricula.Size = new System.Drawing.Size(266, 88);
-            this.grbNavegacionmatricula.TabIndex = 22;
+            this.grbNavegacionmatricula.TabIndex = 26;
             this.grbNavegacionmatricula.TabStop = false;
             this.grbNavegacionmatricula.Text = "Navegacion de Matricula";
             // 
@@ -172,7 +161,6 @@
             this.btnultimo.TabIndex = 3;
             this.btnultimo.Text = ">|";
             this.btnultimo.UseVisualStyleBackColor = true;
-            this.btnultimo.Click += new System.EventHandler(this.btnultimo_Click);
             // 
             // btnsiguiente
             // 
@@ -184,7 +172,6 @@
             this.btnsiguiente.TabIndex = 2;
             this.btnsiguiente.Text = ">";
             this.btnsiguiente.UseVisualStyleBackColor = true;
-            this.btnsiguiente.Click += new System.EventHandler(this.btnsiguiente_Click);
             // 
             // btnanterior
             // 
@@ -196,7 +183,6 @@
             this.btnanterior.TabIndex = 1;
             this.btnanterior.Text = "<";
             this.btnanterior.UseVisualStyleBackColor = true;
-            this.btnanterior.Click += new System.EventHandler(this.btnanterior_Click);
             // 
             // btnprimero
             // 
@@ -208,7 +194,6 @@
             this.btnprimero.TabIndex = 0;
             this.btnprimero.Text = "|<";
             this.btnprimero.UseVisualStyleBackColor = true;
-            this.btnprimero.Click += new System.EventHandler(this.btnprimero_Click);
             // 
             // btnbuscar
             // 
@@ -220,7 +205,6 @@
             this.btnbuscar.Size = new System.Drawing.Size(39, 46);
             this.btnbuscar.TabIndex = 7;
             this.btnbuscar.UseVisualStyleBackColor = true;
-            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // btneliminar
             // 
@@ -232,7 +216,6 @@
             this.btneliminar.Size = new System.Drawing.Size(46, 46);
             this.btneliminar.TabIndex = 6;
             this.btneliminar.UseVisualStyleBackColor = true;
-            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // btnmodificar
             // 
@@ -245,7 +228,6 @@
             this.btnmodificar.TabIndex = 5;
             this.btnmodificar.Tag = "modificar";
             this.btnmodificar.UseVisualStyleBackColor = true;
-            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
             // 
             // btnagregar
             // 
@@ -258,29 +240,26 @@
             this.btnagregar.TabIndex = 4;
             this.btnagregar.Tag = "nuevo";
             this.btnagregar.UseVisualStyleBackColor = true;
-            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
-            // Matricula
+            // Inscrip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 301);
+            this.ClientSize = new System.Drawing.Size(579, 282);
             this.Controls.Add(this.grbDatosMatricula);
-            this.Controls.Add(this.grbMtoMatricula);
-            this.Controls.Add(this.lblMatricula);
+            this.Controls.Add(this.grbMtoInscrip);
             this.Controls.Add(this.grbNavegacionmatricula);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "Matricula";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Matricula";
-            this.Load += new System.EventHandler(this.Matricula_Load);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Inscrip";
+            this.Text = "Inscrip";
             this.grbDatosMatricula.ResumeLayout(false);
             this.grbDatosMatricula.PerformLayout();
-            this.grbMtoMatricula.ResumeLayout(false);
+            this.grbMtoInscrip.ResumeLayout(false);
             this.grbNavegacionmatricula.ResumeLayout(false);
             this.grbNavegacionmatricula.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -293,12 +272,11 @@
         private System.Windows.Forms.TextBox txtcodCarrer;
         private System.Windows.Forms.Label lblcodCarrrer;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.GroupBox grbMtoMatricula;
+        private System.Windows.Forms.GroupBox grbMtoInscrip;
         private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Button btneliminar;
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Button btnagregar;
-        private System.Windows.Forms.Label lblMatricula;
         private System.Windows.Forms.GroupBox grbNavegacionmatricula;
         private System.Windows.Forms.Label lblnregistros;
         private System.Windows.Forms.Button btnultimo;
