@@ -36,21 +36,21 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnseleccionar = new System.Windows.Forms.Button();
             this.grdBusquedaMaterias = new System.Windows.Forms.DataGridView();
-            this.txtbuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.db_academicoDataSet = new ProyectoFinal.db_academicoDataSet();
-            this.materiasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.materiasTableAdapter = new ProyectoFinal.db_academicoDataSetTableAdapters.materiasTableAdapter();
             this.idMateriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prerrequisitoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numordenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materiasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.db_academicoDataSet = new ProyectoFinal.db_academicoDataSet();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.materiasTableAdapter = new ProyectoFinal.db_academicoDataSetTableAdapters.materiasTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdBusquedaMaterias)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db_academicoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materiasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.db_academicoDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -58,6 +58,7 @@
             this.groupBox1.Controls.Add(this.rdbOrden);
             this.groupBox1.Controls.Add(this.rdbCodigo);
             this.groupBox1.Controls.Add(this.rdbNombre);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Location = new System.Drawing.Point(735, 31);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(124, 98);
@@ -105,7 +106,7 @@
             // btncancelar
             // 
             this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btncancelar.Location = new System.Drawing.Point(632, 425);
+            this.btncancelar.Location = new System.Drawing.Point(620, 371);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 13;
@@ -116,7 +117,7 @@
             // btnseleccionar
             // 
             this.btnseleccionar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnseleccionar.Location = new System.Drawing.Point(499, 425);
+            this.btnseleccionar.Location = new System.Drawing.Point(504, 371);
             this.btnseleccionar.Name = "btnseleccionar";
             this.btnseleccionar.Size = new System.Drawing.Size(99, 23);
             this.btnseleccionar.TabIndex = 12;
@@ -143,37 +144,6 @@
             this.grdBusquedaMaterias.ReadOnly = true;
             this.grdBusquedaMaterias.Size = new System.Drawing.Size(695, 268);
             this.grdBusquedaMaterias.TabIndex = 11;
-            // 
-            // txtbuscar
-            // 
-            this.txtbuscar.Location = new System.Drawing.Point(79, 31);
-            this.txtbuscar.Name = "txtbuscar";
-            this.txtbuscar.Size = new System.Drawing.Size(631, 20);
-            this.txtbuscar.TabIndex = 10;
-            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "BUSCAR";
-            // 
-            // db_academicoDataSet
-            // 
-            this.db_academicoDataSet.DataSetName = "db_academicoDataSet";
-            this.db_academicoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // materiasBindingSource
-            // 
-            this.materiasBindingSource.DataMember = "materias";
-            this.materiasBindingSource.DataSource = this.db_academicoDataSet;
-            // 
-            // materiasTableAdapter
-            // 
-            this.materiasTableAdapter.ClearBeforeFill = true;
             // 
             // idMateriaDataGridViewTextBoxColumn
             // 
@@ -217,11 +187,43 @@
             this.numordenDataGridViewTextBoxColumn.Name = "numordenDataGridViewTextBoxColumn";
             this.numordenDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // materiasBindingSource
+            // 
+            this.materiasBindingSource.DataMember = "materias";
+            this.materiasBindingSource.DataSource = this.db_academicoDataSet;
+            // 
+            // db_academicoDataSet
+            // 
+            this.db_academicoDataSet.DataSetName = "db_academicoDataSet";
+            this.db_academicoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // txtbuscar
+            // 
+            this.txtbuscar.Location = new System.Drawing.Point(79, 31);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(631, 20);
+            this.txtbuscar.TabIndex = 10;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label1.Location = new System.Drawing.Point(12, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "BUSCAR";
+            // 
+            // materiasTableAdapter
+            // 
+            this.materiasTableAdapter.ClearBeforeFill = true;
+            // 
             // busqueda_materias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 468);
+            this.ClientSize = new System.Drawing.Size(871, 420);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnseleccionar);
@@ -231,13 +233,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "busqueda_materias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "busqueda_materias";
+            this.Text = "Busqueda de Materias";
             this.Load += new System.EventHandler(this.busqueda_materias_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdBusquedaMaterias)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db_academicoDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materiasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.db_academicoDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
