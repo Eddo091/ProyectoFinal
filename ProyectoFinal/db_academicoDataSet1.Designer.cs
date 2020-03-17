@@ -38,15 +38,19 @@ namespace ProyectoFinal {
         
         private global::System.Data.DataRelation relationFK_alumnos_nota;
         
-        private global::System.Data.DataRelation relationFK_inscripcion_matricula;
+        private global::System.Data.DataRelation relationalumnos_inscripcion;
         
         private global::System.Data.DataRelation relationFK_materias_inscripcion;
         
-        private global::System.Data.DataRelation relationmatricula_alumnos;
+        private global::System.Data.DataRelation relationFK_inscripcion_matricula;
+        
+        private global::System.Data.DataRelation relationFK_matricula_alumnos1;
+        
+        private global::System.Data.DataRelation relationmaterias_alumnos;
         
         private global::System.Data.DataRelation relationmaterias_alumnos1;
         
-        private global::System.Data.DataRelation relationmaterias_alumnos;
+        private global::System.Data.DataRelation relationmatricula_alumnos;
         
         private global::System.Data.DataRelation relationFK_nota_inscripcion;
         
@@ -312,11 +316,13 @@ namespace ProyectoFinal {
             }
             this.relationmatricula_materias = this.Relations["matricula_materias"];
             this.relationFK_alumnos_nota = this.Relations["FK_alumnos_nota"];
-            this.relationFK_inscripcion_matricula = this.Relations["FK_inscripcion_matricula"];
+            this.relationalumnos_inscripcion = this.Relations["alumnos_inscripcion"];
             this.relationFK_materias_inscripcion = this.Relations["FK_materias_inscripcion"];
-            this.relationmatricula_alumnos = this.Relations["matricula_alumnos"];
-            this.relationmaterias_alumnos1 = this.Relations["materias_alumnos1"];
+            this.relationFK_inscripcion_matricula = this.Relations["FK_inscripcion_matricula"];
+            this.relationFK_matricula_alumnos1 = this.Relations["FK_matricula_alumnos1"];
             this.relationmaterias_alumnos = this.Relations["materias_alumnos"];
+            this.relationmaterias_alumnos1 = this.Relations["materias_alumnos1"];
+            this.relationmatricula_alumnos = this.Relations["matricula_alumnos"];
             this.relationFK_nota_inscripcion = this.Relations["FK_nota_inscripcion"];
             this.relationmaterias_inscripcion = this.Relations["materias_inscripcion"];
             this.relationFK_matricula_alumnos = this.Relations["FK_matricula_alumnos"];
@@ -355,9 +361,9 @@ namespace ProyectoFinal {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_inscripcion_matricula", new global::System.Data.DataColumn[] {
-                        this.tablematricula.IdInscripcion_Column}, new global::System.Data.DataColumn[] {
-                        this.tableinscripcion.IdMatriculaColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("alumnos_inscripcion", new global::System.Data.DataColumn[] {
+                        this.tablealumnos.codNIEColumn}, new global::System.Data.DataColumn[] {
+                        this.tableinscripcion.NIEColumn});
             this.tableinscripcion.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
@@ -369,20 +375,20 @@ namespace ProyectoFinal {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("matricula_alumnos", new global::System.Data.DataColumn[] {
-                        this.tablematricula.codAlumnoColumn}, new global::System.Data.DataColumn[] {
-                        this.tablealumnos.codAlumnoColumn});
-            this.tablealumnos.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("materias_alumnos1", new global::System.Data.DataColumn[] {
-                        this.tablematerias.idMateriaColumn}, new global::System.Data.DataColumn[] {
-                        this.tablealumnos.codMateriaColumn});
-            this.tablealumnos.Constraints.Add(fkc);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_inscripcion_matricula", new global::System.Data.DataColumn[] {
+                        this.tablematricula.IdInscripcion_Column}, new global::System.Data.DataColumn[] {
+                        this.tableinscripcion.IdMatriculaColumn});
+            this.tableinscripcion.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_matricula_alumnos1", new global::System.Data.DataColumn[] {
+                        this.tablematricula.codEspecialidadColumn}, new global::System.Data.DataColumn[] {
+                        this.tablealumnos.codEspecialidadColumn});
+            this.tablealumnos.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("materias_alumnos", new global::System.Data.DataColumn[] {
                         this.tablematerias.codAlumnoColumn}, new global::System.Data.DataColumn[] {
                         this.tablealumnos.codAlumnoColumn});
@@ -390,6 +396,20 @@ namespace ProyectoFinal {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("materias_alumnos1", new global::System.Data.DataColumn[] {
+                        this.tablematerias.idMateriaColumn}, new global::System.Data.DataColumn[] {
+                        this.tablealumnos.codMateriaColumn});
+            this.tablealumnos.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("matricula_alumnos", new global::System.Data.DataColumn[] {
+                        this.tablematricula.codAlumnoColumn}, new global::System.Data.DataColumn[] {
+                        this.tablealumnos.codAlumnoColumn});
+            this.tablealumnos.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationmatricula_materias = new global::System.Data.DataRelation("matricula_materias", new global::System.Data.DataColumn[] {
                         this.tablematricula.IdMatricula_Column}, new global::System.Data.DataColumn[] {
                         this.tablematerias.idMateriaColumn}, false);
@@ -398,26 +418,34 @@ namespace ProyectoFinal {
                         this.tablealumnos.codAlumnoColumn}, new global::System.Data.DataColumn[] {
                         this.tablenota.AlumnocodColumn}, false);
             this.Relations.Add(this.relationFK_alumnos_nota);
-            this.relationFK_inscripcion_matricula = new global::System.Data.DataRelation("FK_inscripcion_matricula", new global::System.Data.DataColumn[] {
-                        this.tablematricula.IdInscripcion_Column}, new global::System.Data.DataColumn[] {
-                        this.tableinscripcion.IdMatriculaColumn}, false);
-            this.Relations.Add(this.relationFK_inscripcion_matricula);
+            this.relationalumnos_inscripcion = new global::System.Data.DataRelation("alumnos_inscripcion", new global::System.Data.DataColumn[] {
+                        this.tablealumnos.codNIEColumn}, new global::System.Data.DataColumn[] {
+                        this.tableinscripcion.NIEColumn}, false);
+            this.Relations.Add(this.relationalumnos_inscripcion);
             this.relationFK_materias_inscripcion = new global::System.Data.DataRelation("FK_materias_inscripcion", new global::System.Data.DataColumn[] {
                         this.tablematerias.IdInscripcion_Column}, new global::System.Data.DataColumn[] {
                         this.tableinscripcion.IdInscripcion_Column}, false);
             this.Relations.Add(this.relationFK_materias_inscripcion);
-            this.relationmatricula_alumnos = new global::System.Data.DataRelation("matricula_alumnos", new global::System.Data.DataColumn[] {
-                        this.tablematricula.codAlumnoColumn}, new global::System.Data.DataColumn[] {
-                        this.tablealumnos.codAlumnoColumn}, false);
-            this.Relations.Add(this.relationmatricula_alumnos);
-            this.relationmaterias_alumnos1 = new global::System.Data.DataRelation("materias_alumnos1", new global::System.Data.DataColumn[] {
-                        this.tablematerias.idMateriaColumn}, new global::System.Data.DataColumn[] {
-                        this.tablealumnos.codMateriaColumn}, false);
-            this.Relations.Add(this.relationmaterias_alumnos1);
+            this.relationFK_inscripcion_matricula = new global::System.Data.DataRelation("FK_inscripcion_matricula", new global::System.Data.DataColumn[] {
+                        this.tablematricula.IdInscripcion_Column}, new global::System.Data.DataColumn[] {
+                        this.tableinscripcion.IdMatriculaColumn}, false);
+            this.Relations.Add(this.relationFK_inscripcion_matricula);
+            this.relationFK_matricula_alumnos1 = new global::System.Data.DataRelation("FK_matricula_alumnos1", new global::System.Data.DataColumn[] {
+                        this.tablematricula.codEspecialidadColumn}, new global::System.Data.DataColumn[] {
+                        this.tablealumnos.codEspecialidadColumn}, false);
+            this.Relations.Add(this.relationFK_matricula_alumnos1);
             this.relationmaterias_alumnos = new global::System.Data.DataRelation("materias_alumnos", new global::System.Data.DataColumn[] {
                         this.tablematerias.codAlumnoColumn}, new global::System.Data.DataColumn[] {
                         this.tablealumnos.codAlumnoColumn}, false);
             this.Relations.Add(this.relationmaterias_alumnos);
+            this.relationmaterias_alumnos1 = new global::System.Data.DataRelation("materias_alumnos1", new global::System.Data.DataColumn[] {
+                        this.tablematerias.idMateriaColumn}, new global::System.Data.DataColumn[] {
+                        this.tablealumnos.codMateriaColumn}, false);
+            this.Relations.Add(this.relationmaterias_alumnos1);
+            this.relationmatricula_alumnos = new global::System.Data.DataRelation("matricula_alumnos", new global::System.Data.DataColumn[] {
+                        this.tablematricula.codAlumnoColumn}, new global::System.Data.DataColumn[] {
+                        this.tablealumnos.codAlumnoColumn}, false);
+            this.Relations.Add(this.relationmatricula_alumnos);
             this.relationFK_nota_inscripcion = new global::System.Data.DataRelation("FK_nota_inscripcion", new global::System.Data.DataColumn[] {
                         this.tableinscripcion.IdInscripcion_Column}, new global::System.Data.DataColumn[] {
                         this.tablenota.IdInscripcion_Column}, false);
@@ -920,7 +948,7 @@ namespace ProyectoFinal {
             
             private global::System.Data.DataColumn columnLab2;
             
-            private global::System.Data.DataColumn columnParcial;
+            private global::System.Data.DataColumn columnExamen;
             
             private global::System.Data.DataColumn columnPromedioComputo_;
             
@@ -1001,9 +1029,9 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ParcialColumn {
+            public global::System.Data.DataColumn ExamenColumn {
                 get {
-                    return this.columnParcial;
+                    return this.columnExamen;
                 }
             }
             
@@ -1060,7 +1088,7 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public notaRow AddnotaRow(int IdNota_, alumnosRow parentalumnosRowByFK_alumnos_nota, string codMateria_, string Lab1, string Lab2, string Parcial, string PromedioComputo_, inscripcionRow parentinscripcionRowByFK_nota_inscripcion) {
+            public notaRow AddnotaRow(int IdNota_, alumnosRow parentalumnosRowByFK_alumnos_nota, string codMateria_, string Lab1, string Lab2, string Examen, string PromedioComputo_, inscripcionRow parentinscripcionRowByFK_nota_inscripcion) {
                 notaRow rownotaRow = ((notaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdNota_,
@@ -1068,7 +1096,7 @@ namespace ProyectoFinal {
                         codMateria_,
                         Lab1,
                         Lab2,
-                        Parcial,
+                        Examen,
                         PromedioComputo_,
                         null};
                 if ((parentalumnosRowByFK_alumnos_nota != null)) {
@@ -1111,7 +1139,7 @@ namespace ProyectoFinal {
                 this.columncodMateria_ = base.Columns["codMateria "];
                 this.columnLab1 = base.Columns["Lab1"];
                 this.columnLab2 = base.Columns["Lab2"];
-                this.columnParcial = base.Columns["Parcial"];
+                this.columnExamen = base.Columns["Examen"];
                 this.columnPromedioComputo_ = base.Columns["PromedioComputo "];
                 this.columnIdInscripcion_ = base.Columns["IdInscripcion "];
             }
@@ -1129,8 +1157,8 @@ namespace ProyectoFinal {
                 base.Columns.Add(this.columnLab1);
                 this.columnLab2 = new global::System.Data.DataColumn("Lab2", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLab2);
-                this.columnParcial = new global::System.Data.DataColumn("Parcial", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnParcial);
+                this.columnExamen = new global::System.Data.DataColumn("Examen", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExamen);
                 this.columnPromedioComputo_ = new global::System.Data.DataColumn("PromedioComputo ", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPromedioComputo_);
                 this.columnIdInscripcion_ = new global::System.Data.DataColumn("IdInscripcion ", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1151,7 +1179,7 @@ namespace ProyectoFinal {
                 this.columncodMateria_.MaxLength = 10;
                 this.columnLab1.MaxLength = 10;
                 this.columnLab2.MaxLength = 10;
-                this.columnParcial.MaxLength = 10;
+                this.columnExamen.MaxLength = 10;
                 this.columnPromedioComputo_.MaxLength = 10;
                 this.columnIdInscripcion_.AutoIncrementSeed = -1;
                 this.columnIdInscripcion_.AutoIncrementStep = -1;
@@ -1296,11 +1324,9 @@ namespace ProyectoFinal {
             
             private global::System.Data.DataColumn columnIdMateria_;
             
-            private global::System.Data.DataColumn columnTituloBachiller;
+            private global::System.Data.DataColumn columnTituloBasico;
             
-            private global::System.Data.DataColumn columnDUI;
-            
-            private global::System.Data.DataColumn columnNIT;
+            private global::System.Data.DataColumn columnNIE;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1361,25 +1387,17 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TituloBachillerColumn {
+            public global::System.Data.DataColumn TituloBasicoColumn {
                 get {
-                    return this.columnTituloBachiller;
+                    return this.columnTituloBasico;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DUIColumn {
+            public global::System.Data.DataColumn NIEColumn {
                 get {
-                    return this.columnDUI;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NITColumn {
-                get {
-                    return this.columnNIT;
+                    return this.columnNIE;
                 }
             }
             
@@ -1420,15 +1438,14 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public inscripcionRow AddinscripcionRow(materiasRow parentmateriasRowByFK_materias_inscripcion, matriculaRow parentmatriculaRowByFK_inscripcion_matricula, materiasRow parentmateriasRowBymaterias_inscripcion, string TituloBachiller, string DUI, string NIT) {
+            public inscripcionRow AddinscripcionRow(materiasRow parentmateriasRowByFK_materias_inscripcion, matriculaRow parentmatriculaRowByFK_inscripcion_matricula, materiasRow parentmateriasRowBymaterias_inscripcion, string TituloBasico, alumnosRow parentalumnosRowByalumnos_inscripcion) {
                 inscripcionRow rowinscripcionRow = ((inscripcionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         null,
-                        TituloBachiller,
-                        DUI,
-                        NIT};
+                        TituloBasico,
+                        null};
                 if ((parentmateriasRowByFK_materias_inscripcion != null)) {
                     columnValuesArray[0] = parentmateriasRowByFK_materias_inscripcion[7];
                 }
@@ -1437,6 +1454,9 @@ namespace ProyectoFinal {
                 }
                 if ((parentmateriasRowBymaterias_inscripcion != null)) {
                     columnValuesArray[2] = parentmateriasRowBymaterias_inscripcion[0];
+                }
+                if ((parentalumnosRowByalumnos_inscripcion != null)) {
+                    columnValuesArray[4] = parentalumnosRowByalumnos_inscripcion[4];
                 }
                 rowinscripcionRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowinscripcionRow);
@@ -1470,9 +1490,8 @@ namespace ProyectoFinal {
                 this.columnIdInscripcion_ = base.Columns["IdInscripcion "];
                 this.columnIdMatricula = base.Columns["IdMatricula"];
                 this.columnIdMateria_ = base.Columns["IdMateria "];
-                this.columnTituloBachiller = base.Columns["TituloBachiller"];
-                this.columnDUI = base.Columns["DUI"];
-                this.columnNIT = base.Columns["NIT"];
+                this.columnTituloBasico = base.Columns["TituloBasico"];
+                this.columnNIE = base.Columns["NIE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1484,19 +1503,16 @@ namespace ProyectoFinal {
                 base.Columns.Add(this.columnIdMatricula);
                 this.columnIdMateria_ = new global::System.Data.DataColumn("IdMateria ", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdMateria_);
-                this.columnTituloBachiller = new global::System.Data.DataColumn("TituloBachiller", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTituloBachiller);
-                this.columnDUI = new global::System.Data.DataColumn("DUI", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDUI);
-                this.columnNIT = new global::System.Data.DataColumn("NIT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNIT);
+                this.columnTituloBasico = new global::System.Data.DataColumn("TituloBasico", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTituloBasico);
+                this.columnNIE = new global::System.Data.DataColumn("NIE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNIE);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdInscripcion_}, true));
                 this.columnIdInscripcion_.AllowDBNull = false;
                 this.columnIdInscripcion_.Unique = true;
-                this.columnTituloBachiller.MaxLength = 10;
-                this.columnDUI.MaxLength = 10;
-                this.columnNIT.MaxLength = 10;
+                this.columnTituloBasico.MaxLength = 10;
+                this.columnNIE.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1638,9 +1654,9 @@ namespace ProyectoFinal {
             
             private global::System.Data.DataColumn columnTelefono;
             
-            private global::System.Data.DataColumn columncodCarrera;
+            private global::System.Data.DataColumn columncodNIE;
             
-            private global::System.Data.DataColumn columncodFacultad;
+            private global::System.Data.DataColumn columncodEspecialidad;
             
             private global::System.Data.DataColumn columncodMatricula;
             
@@ -1713,17 +1729,17 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn codCarreraColumn {
+            public global::System.Data.DataColumn codNIEColumn {
                 get {
-                    return this.columncodCarrera;
+                    return this.columncodNIE;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn codFacultadColumn {
+            public global::System.Data.DataColumn codEspecialidadColumn {
                 get {
-                    return this.columncodFacultad;
+                    return this.columncodEspecialidad;
                 }
             }
             
@@ -1780,17 +1796,20 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public alumnosRow AddalumnosRow(string Nombre, string Direccion, string Telefono, string codCarrera, string codFacultad, string codMatricula, materiasRow parentmateriasRowBymaterias_alumnos1) {
+            public alumnosRow AddalumnosRow(string Nombre, string Direccion, string Telefono, string codNIE, matriculaRow parentmatriculaRowByFK_matricula_alumnos1, string codMatricula, materiasRow parentmateriasRowBymaterias_alumnos1) {
                 alumnosRow rowalumnosRow = ((alumnosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Nombre,
                         Direccion,
                         Telefono,
-                        codCarrera,
-                        codFacultad,
+                        codNIE,
+                        null,
                         codMatricula,
                         null};
+                if ((parentmatriculaRowByFK_matricula_alumnos1 != null)) {
+                    columnValuesArray[5] = parentmatriculaRowByFK_matricula_alumnos1[2];
+                }
                 if ((parentmateriasRowBymaterias_alumnos1 != null)) {
                     columnValuesArray[7] = parentmateriasRowBymaterias_alumnos1[0];
                 }
@@ -1827,8 +1846,8 @@ namespace ProyectoFinal {
                 this.columnNombre = base.Columns["Nombre"];
                 this.columnDireccion = base.Columns["Direccion"];
                 this.columnTelefono = base.Columns["Telefono"];
-                this.columncodCarrera = base.Columns["codCarrera"];
-                this.columncodFacultad = base.Columns["codFacultad"];
+                this.columncodNIE = base.Columns["codNIE"];
+                this.columncodEspecialidad = base.Columns["codEspecialidad"];
                 this.columncodMatricula = base.Columns["codMatricula"];
                 this.columncodMateria = base.Columns["codMateria"];
             }
@@ -1844,16 +1863,18 @@ namespace ProyectoFinal {
                 base.Columns.Add(this.columnDireccion);
                 this.columnTelefono = new global::System.Data.DataColumn("Telefono", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTelefono);
-                this.columncodCarrera = new global::System.Data.DataColumn("codCarrera", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncodCarrera);
-                this.columncodFacultad = new global::System.Data.DataColumn("codFacultad", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncodFacultad);
+                this.columncodNIE = new global::System.Data.DataColumn("codNIE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncodNIE);
+                this.columncodEspecialidad = new global::System.Data.DataColumn("codEspecialidad", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncodEspecialidad);
                 this.columncodMatricula = new global::System.Data.DataColumn("codMatricula", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncodMatricula);
                 this.columncodMateria = new global::System.Data.DataColumn("codMateria", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncodMateria);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columncodAlumno}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columncodNIE}, false));
                 this.columncodAlumno.AutoIncrement = true;
                 this.columncodAlumno.AutoIncrementSeed = -1;
                 this.columncodAlumno.AutoIncrementStep = -1;
@@ -1863,8 +1884,9 @@ namespace ProyectoFinal {
                 this.columnNombre.MaxLength = 75;
                 this.columnDireccion.MaxLength = 150;
                 this.columnTelefono.MaxLength = 9;
-                this.columncodCarrera.MaxLength = 10;
-                this.columncodFacultad.MaxLength = 10;
+                this.columncodNIE.Unique = true;
+                this.columncodNIE.MaxLength = 10;
+                this.columncodEspecialidad.MaxLength = 10;
                 this.columncodMatricula.MaxLength = 10;
             }
             
@@ -2213,9 +2235,12 @@ namespace ProyectoFinal {
                                 this.columnIdInscripcion_}, false));
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint3", new global::System.Data.DataColumn[] {
                                 this.columncodAlumno}, false));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint4", new global::System.Data.DataColumn[] {
+                                this.columncodEspecialidad}, false));
                 this.columnIdMatricula_.AllowDBNull = false;
                 this.columnIdMatricula_.Unique = true;
                 this.columnIdAlumnos.MaxLength = 10;
+                this.columncodEspecialidad.Unique = true;
                 this.columncodEspecialidad.MaxLength = 10;
                 this.columnNombreAlumno.MaxLength = 10;
                 this.columncodAlumno.AutoIncrementSeed = -1;
@@ -2583,23 +2608,23 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public alumnosRow[] GetalumnosRowsBymaterias_alumnos1() {
-                if ((this.Table.ChildRelations["materias_alumnos1"] == null)) {
-                    return new alumnosRow[0];
-                }
-                else {
-                    return ((alumnosRow[])(base.GetChildRows(this.Table.ChildRelations["materias_alumnos1"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public alumnosRow[] GetalumnosRowsBymaterias_alumnos() {
                 if ((this.Table.ChildRelations["materias_alumnos"] == null)) {
                     return new alumnosRow[0];
                 }
                 else {
                     return ((alumnosRow[])(base.GetChildRows(this.Table.ChildRelations["materias_alumnos"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public alumnosRow[] GetalumnosRowsBymaterias_alumnos1() {
+                if ((this.Table.ChildRelations["materias_alumnos1"] == null)) {
+                    return new alumnosRow[0];
+                }
+                else {
+                    return ((alumnosRow[])(base.GetChildRows(this.Table.ChildRelations["materias_alumnos1"])));
                 }
             }
             
@@ -2717,17 +2742,17 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Parcial {
+            public string Examen {
                 get {
                     try {
-                        return ((string)(this[this.tablenota.ParcialColumn]));
+                        return ((string)(this[this.tablenota.ExamenColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Parcial\' de la tabla \'nota\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Examen\' de la tabla \'nota\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablenota.ParcialColumn] = value;
+                    this[this.tablenota.ExamenColumn] = value;
                 }
             }
             
@@ -2835,14 +2860,14 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsParcialNull() {
-                return this.IsNull(this.tablenota.ParcialColumn);
+            public bool IsExamenNull() {
+                return this.IsNull(this.tablenota.ExamenColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetParcialNull() {
-                this[this.tablenota.ParcialColumn] = global::System.Convert.DBNull;
+            public void SetExamenNull() {
+                this[this.tablenota.ExamenColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2929,60 +2954,44 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TituloBachiller {
+            public string TituloBasico {
                 get {
                     try {
-                        return ((string)(this[this.tableinscripcion.TituloBachillerColumn]));
+                        return ((string)(this[this.tableinscripcion.TituloBasicoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TituloBachiller\' de la tabla \'inscripcion\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TituloBasico\' de la tabla \'inscripcion\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableinscripcion.TituloBachillerColumn] = value;
+                    this[this.tableinscripcion.TituloBasicoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DUI {
+            public string NIE {
                 get {
                     try {
-                        return ((string)(this[this.tableinscripcion.DUIColumn]));
+                        return ((string)(this[this.tableinscripcion.NIEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DUI\' de la tabla \'inscripcion\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NIE\' de la tabla \'inscripcion\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableinscripcion.DUIColumn] = value;
+                    this[this.tableinscripcion.NIEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NIT {
+            public alumnosRow alumnosRow {
                 get {
-                    try {
-                        return ((string)(this[this.tableinscripcion.NITColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NIT\' de la tabla \'inscripcion\' es DBNull.", e);
-                    }
+                    return ((alumnosRow)(this.GetParentRow(this.Table.ParentRelations["alumnos_inscripcion"])));
                 }
                 set {
-                    this[this.tableinscripcion.NITColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public matriculaRow matriculaRow {
-                get {
-                    return ((matriculaRow)(this.GetParentRow(this.Table.ParentRelations["FK_inscripcion_matricula"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_inscripcion_matricula"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["alumnos_inscripcion"]);
                 }
             }
             
@@ -2994,6 +3003,17 @@ namespace ProyectoFinal {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_materias_inscripcion"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public matriculaRow matriculaRow {
+                get {
+                    return ((matriculaRow)(this.GetParentRow(this.Table.ParentRelations["FK_inscripcion_matricula"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_inscripcion_matricula"]);
                 }
             }
             
@@ -3034,38 +3054,26 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTituloBachillerNull() {
-                return this.IsNull(this.tableinscripcion.TituloBachillerColumn);
+            public bool IsTituloBasicoNull() {
+                return this.IsNull(this.tableinscripcion.TituloBasicoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTituloBachillerNull() {
-                this[this.tableinscripcion.TituloBachillerColumn] = global::System.Convert.DBNull;
+            public void SetTituloBasicoNull() {
+                this[this.tableinscripcion.TituloBasicoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDUINull() {
-                return this.IsNull(this.tableinscripcion.DUIColumn);
+            public bool IsNIENull() {
+                return this.IsNull(this.tableinscripcion.NIEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDUINull() {
-                this[this.tableinscripcion.DUIColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNITNull() {
-                return this.IsNull(this.tableinscripcion.NITColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNITNull() {
-                this[this.tableinscripcion.NITColumn] = global::System.Convert.DBNull;
+            public void SetNIENull() {
+                this[this.tableinscripcion.NIEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3155,33 +3163,33 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string codCarrera {
+            public string codNIE {
                 get {
                     try {
-                        return ((string)(this[this.tablealumnos.codCarreraColumn]));
+                        return ((string)(this[this.tablealumnos.codNIEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'codCarrera\' de la tabla \'alumnos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'codNIE\' de la tabla \'alumnos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablealumnos.codCarreraColumn] = value;
+                    this[this.tablealumnos.codNIEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string codFacultad {
+            public string codEspecialidad {
                 get {
                     try {
-                        return ((string)(this[this.tablealumnos.codFacultadColumn]));
+                        return ((string)(this[this.tablealumnos.codEspecialidadColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'codFacultad\' de la tabla \'alumnos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'codEspecialidad\' de la tabla \'alumnos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablealumnos.codFacultadColumn] = value;
+                    this[this.tablealumnos.codEspecialidadColumn] = value;
                 }
             }
             
@@ -3219,12 +3227,23 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public matriculaRow matriculaRow {
+            public matriculaRow matriculaRowByFK_matricula_alumnos1 {
                 get {
-                    return ((matriculaRow)(this.GetParentRow(this.Table.ParentRelations["matricula_alumnos"])));
+                    return ((matriculaRow)(this.GetParentRow(this.Table.ParentRelations["FK_matricula_alumnos1"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["matricula_alumnos"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_matricula_alumnos1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public materiasRow materiasRowBymaterias_alumnos {
+                get {
+                    return ((materiasRow)(this.GetParentRow(this.Table.ParentRelations["materias_alumnos"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["materias_alumnos"]);
                 }
             }
             
@@ -3241,12 +3260,12 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public materiasRow materiasRowBymaterias_alumnos {
+            public matriculaRow matriculaRow {
                 get {
-                    return ((materiasRow)(this.GetParentRow(this.Table.ParentRelations["materias_alumnos"])));
+                    return ((matriculaRow)(this.GetParentRow(this.Table.ParentRelations["matricula_alumnos"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["materias_alumnos"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["matricula_alumnos"]);
                 }
             }
             
@@ -3288,26 +3307,26 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IscodCarreraNull() {
-                return this.IsNull(this.tablealumnos.codCarreraColumn);
+            public bool IscodNIENull() {
+                return this.IsNull(this.tablealumnos.codNIEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetcodCarreraNull() {
-                this[this.tablealumnos.codCarreraColumn] = global::System.Convert.DBNull;
+            public void SetcodNIENull() {
+                this[this.tablealumnos.codNIEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IscodFacultadNull() {
-                return this.IsNull(this.tablealumnos.codFacultadColumn);
+            public bool IscodEspecialidadNull() {
+                return this.IsNull(this.tablealumnos.codEspecialidadColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetcodFacultadNull() {
-                this[this.tablealumnos.codFacultadColumn] = global::System.Convert.DBNull;
+            public void SetcodEspecialidadNull() {
+                this[this.tablealumnos.codEspecialidadColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3332,6 +3351,17 @@ namespace ProyectoFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetcodMateriaNull() {
                 this[this.tablealumnos.codMateriaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public inscripcionRow[] GetinscripcionRows() {
+                if ((this.Table.ChildRelations["alumnos_inscripcion"] == null)) {
+                    return new inscripcionRow[0];
+                }
+                else {
+                    return ((inscripcionRow[])(base.GetChildRows(this.Table.ChildRelations["alumnos_inscripcion"])));
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3559,6 +3589,17 @@ namespace ProyectoFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMateriaIdNull() {
                 this[this.tablematricula.MateriaIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public alumnosRow[] GetalumnosRowsByFK_matricula_alumnos1() {
+                if ((this.Table.ChildRelations["FK_matricula_alumnos1"] == null)) {
+                    return new alumnosRow[0];
+                }
+                else {
+                    return ((alumnosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_matricula_alumnos1"])));
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4444,7 +4485,7 @@ SELECT idMateria, codigo, materia, uv, prerrequisito, num_orden, codAlumno, [IdI
             tableMapping.ColumnMappings.Add("codMateria ", "codMateria ");
             tableMapping.ColumnMappings.Add("Lab1", "Lab1");
             tableMapping.ColumnMappings.Add("Lab2", "Lab2");
-            tableMapping.ColumnMappings.Add("Parcial", "Parcial");
+            tableMapping.ColumnMappings.Add("Parcial", "Examen");
             tableMapping.ColumnMappings.Add("PromedioComputo ", "PromedioComputo ");
             tableMapping.ColumnMappings.Add("IdInscripcion ", "IdInscripcion ");
             this._adapter.TableMappings.Add(tableMapping);
@@ -4993,9 +5034,8 @@ SELECT [IdNota ], codAlumno, [codMateria ], Lab1, Lab2, Parcial, [PromedioComput
             tableMapping.ColumnMappings.Add("IdInscripcion ", "IdInscripcion ");
             tableMapping.ColumnMappings.Add("IdMatricula", "IdMatricula");
             tableMapping.ColumnMappings.Add("IdMateria ", "IdMateria ");
-            tableMapping.ColumnMappings.Add("TituloBachiller", "TituloBachiller");
-            tableMapping.ColumnMappings.Add("DUI", "DUI");
-            tableMapping.ColumnMappings.Add("NIT", "NIT");
+            tableMapping.ColumnMappings.Add("TituloBachiller", "TituloBasico");
+            tableMapping.ColumnMappings.Add("DUI", "NIE");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -5060,8 +5100,8 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FRO" +
-                "M dbo.inscripcion";
+            this._commandCollection[0].CommandText = "SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI FROM ins" +
+                "cripcion";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5459,8 +5499,8 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
             tableMapping.ColumnMappings.Add("Nombre", "Nombre");
             tableMapping.ColumnMappings.Add("Direccion", "Direccion");
             tableMapping.ColumnMappings.Add("Telefono", "Telefono");
-            tableMapping.ColumnMappings.Add("codCarrera", "codCarrera");
-            tableMapping.ColumnMappings.Add("codFacultad", "codFacultad");
+            tableMapping.ColumnMappings.Add("codCarrera", "codNIE");
+            tableMapping.ColumnMappings.Add("codFacultad", "codEspecialidad");
             tableMapping.ColumnMappings.Add("codMatricula", "codMatricula");
             tableMapping.ColumnMappings.Add("codMateria", "codMateria");
             this._adapter.TableMappings.Add(tableMapping);

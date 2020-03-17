@@ -184,7 +184,7 @@ SELECT [IdNota ], codAlumno, [codMateria ], Lab1, Lab2, Parcial, [PromedioComput
               <Mapping SourceColumn="codMateria " DataSetColumn="codMateria " />
               <Mapping SourceColumn="Lab1" DataSetColumn="Lab1" />
               <Mapping SourceColumn="Lab2" DataSetColumn="Lab2" />
-              <Mapping SourceColumn="Parcial" DataSetColumn="Parcial" />
+              <Mapping SourceColumn="Parcial" DataSetColumn="Examen" />
               <Mapping SourceColumn="PromedioComputo " DataSetColumn="PromedioComputo " />
               <Mapping SourceColumn="IdInscripcion " DataSetColumn="IdInscripcion " />
             </Mappings>
@@ -227,7 +227,7 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FROM dbo.inscripcion</CommandText>
+                    <CommandText>SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI FROM inscripcion</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -262,9 +262,8 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
               <Mapping SourceColumn="IdInscripcion " DataSetColumn="IdInscripcion " />
               <Mapping SourceColumn="IdMatricula" DataSetColumn="IdMatricula" />
               <Mapping SourceColumn="IdMateria " DataSetColumn="IdMateria " />
-              <Mapping SourceColumn="TituloBachiller" DataSetColumn="TituloBachiller" />
-              <Mapping SourceColumn="DUI" DataSetColumn="DUI" />
-              <Mapping SourceColumn="NIT" DataSetColumn="NIT" />
+              <Mapping SourceColumn="TituloBachiller" DataSetColumn="TituloBasico" />
+              <Mapping SourceColumn="DUI" DataSetColumn="NIE" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -352,8 +351,8 @@ SELECT codAlumno, Nombre, Direccion, Telefono, codCarrera, codFacultad, codMatri
               <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
               <Mapping SourceColumn="Direccion" DataSetColumn="Direccion" />
               <Mapping SourceColumn="Telefono" DataSetColumn="Telefono" />
-              <Mapping SourceColumn="codCarrera" DataSetColumn="codCarrera" />
-              <Mapping SourceColumn="codFacultad" DataSetColumn="codFacultad" />
+              <Mapping SourceColumn="codCarrera" DataSetColumn="codNIE" />
+              <Mapping SourceColumn="codFacultad" DataSetColumn="codEspecialidad" />
               <Mapping SourceColumn="codMatricula" DataSetColumn="codMatricula" />
               <Mapping SourceColumn="codMateria" DataSetColumn="codMateria" />
             </Mappings>
@@ -446,7 +445,7 @@ SELECT [IdMatricula ], IdAlumnos, codEspecialidad, NombreAlumno, codAlumno, [IdI
   <xs:element name="db_academicoDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="db_academicoDataSet" msprop:Generator_UserDSName="db_academicoDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="materias" msprop:Generator_TableClassName="materiasDataTable" msprop:Generator_TableVarName="tablematerias" msprop:Generator_TablePropName="materias" msprop:Generator_RowDeletingName="materiasRowDeleting" msprop:Generator_RowChangingName="materiasRowChanging" msprop:Generator_RowEvHandlerName="materiasRowChangeEventHandler" msprop:Generator_RowDeletedName="materiasRowDeleted" msprop:Generator_UserTableName="materias" msprop:Generator_RowChangedName="materiasRowChanged" msprop:Generator_RowEvArgName="materiasRowChangeEvent" msprop:Generator_RowClassName="materiasRow">
+        <xs:element name="materias" msprop:Generator_TableClassName="materiasDataTable" msprop:Generator_TableVarName="tablematerias" msprop:Generator_RowChangedName="materiasRowChanged" msprop:Generator_TablePropName="materias" msprop:Generator_RowDeletingName="materiasRowDeleting" msprop:Generator_RowChangingName="materiasRowChanging" msprop:Generator_RowEvHandlerName="materiasRowChangeEventHandler" msprop:Generator_RowDeletedName="materiasRowDeleted" msprop:Generator_RowClassName="materiasRow" msprop:Generator_UserTableName="materias" msprop:Generator_RowEvArgName="materiasRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idMateria" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidMateria" msprop:Generator_ColumnPropNameInRow="idMateria" msprop:Generator_ColumnPropNameInTable="idMateriaColumn" msprop:Generator_UserColumnName="idMateria" type="xs:int" />
@@ -490,7 +489,7 @@ SELECT [IdMatricula ], IdAlumnos, codEspecialidad, NombreAlumno, codAlumno, [IdI
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="nota" msprop:Generator_TableClassName="notaDataTable" msprop:Generator_TableVarName="tablenota" msprop:Generator_RowChangedName="notaRowChanged" msprop:Generator_TablePropName="nota" msprop:Generator_RowDeletingName="notaRowDeleting" msprop:Generator_RowChangingName="notaRowChanging" msprop:Generator_RowEvHandlerName="notaRowChangeEventHandler" msprop:Generator_RowDeletedName="notaRowDeleted" msprop:Generator_RowClassName="notaRow" msprop:Generator_UserTableName="nota" msprop:Generator_RowEvArgName="notaRowChangeEvent">
+        <xs:element name="nota" msprop:Generator_TableClassName="notaDataTable" msprop:Generator_TableVarName="tablenota" msprop:Generator_TablePropName="nota" msprop:Generator_RowDeletingName="notaRowDeleting" msprop:Generator_RowChangingName="notaRowChanging" msprop:Generator_RowEvHandlerName="notaRowChangeEventHandler" msprop:Generator_RowDeletedName="notaRowDeleted" msprop:Generator_UserTableName="nota" msprop:Generator_RowChangedName="notaRowChanged" msprop:Generator_RowEvArgName="notaRowChangeEvent" msprop:Generator_RowClassName="notaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdNota_x0020_" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnIdNota_" msprop:Generator_ColumnPropNameInRow="IdNota_" msprop:Generator_ColumnPropNameInTable="IdNota_Column" msprop:Generator_UserColumnName="IdNota " type="xs:int" />
@@ -516,7 +515,7 @@ SELECT [IdMatricula ], IdAlumnos, codEspecialidad, NombreAlumno, codAlumno, [IdI
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Parcial" msprop:Generator_ColumnVarNameInTable="columnParcial" msprop:Generator_ColumnPropNameInRow="Parcial" msprop:Generator_ColumnPropNameInTable="ParcialColumn" msprop:Generator_UserColumnName="Parcial" minOccurs="0">
+              <xs:element name="Examen" msprop:Generator_ColumnVarNameInTable="columnExamen" msprop:Generator_ColumnPropNameInRow="Examen" msprop:Generator_ColumnPropNameInTable="ExamenColumn" msprop:Generator_UserColumnName="Examen" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
@@ -534,27 +533,20 @@ SELECT [IdMatricula ], IdAlumnos, codEspecialidad, NombreAlumno, codAlumno, [IdI
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="inscripcion" msprop:Generator_TableClassName="inscripcionDataTable" msprop:Generator_TableVarName="tableinscripcion" msprop:Generator_RowChangedName="inscripcionRowChanged" msprop:Generator_TablePropName="inscripcion" msprop:Generator_RowDeletingName="inscripcionRowDeleting" msprop:Generator_RowChangingName="inscripcionRowChanging" msprop:Generator_RowEvHandlerName="inscripcionRowChangeEventHandler" msprop:Generator_RowDeletedName="inscripcionRowDeleted" msprop:Generator_RowClassName="inscripcionRow" msprop:Generator_UserTableName="inscripcion" msprop:Generator_RowEvArgName="inscripcionRowChangeEvent">
+        <xs:element name="inscripcion" msprop:Generator_TableClassName="inscripcionDataTable" msprop:Generator_TableVarName="tableinscripcion" msprop:Generator_TablePropName="inscripcion" msprop:Generator_RowDeletingName="inscripcionRowDeleting" msprop:Generator_RowChangingName="inscripcionRowChanging" msprop:Generator_RowEvHandlerName="inscripcionRowChangeEventHandler" msprop:Generator_RowDeletedName="inscripcionRowDeleted" msprop:Generator_UserTableName="inscripcion" msprop:Generator_RowChangedName="inscripcionRowChanged" msprop:Generator_RowEvArgName="inscripcionRowChangeEvent" msprop:Generator_RowClassName="inscripcionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdInscripcion_x0020_" msprop:Generator_ColumnVarNameInTable="columnIdInscripcion_" msprop:Generator_ColumnPropNameInRow="IdInscripcion_" msprop:Generator_ColumnPropNameInTable="IdInscripcion_Column" msprop:Generator_UserColumnName="IdInscripcion " type="xs:int" />
               <xs:element name="IdMatricula" msprop:Generator_ColumnVarNameInTable="columnIdMatricula" msprop:Generator_ColumnPropNameInRow="IdMatricula" msprop:Generator_ColumnPropNameInTable="IdMatriculaColumn" msprop:Generator_UserColumnName="IdMatricula" type="xs:int" minOccurs="0" />
               <xs:element name="IdMateria_x0020_" msprop:Generator_ColumnVarNameInTable="columnIdMateria_" msprop:Generator_ColumnPropNameInRow="IdMateria_" msprop:Generator_ColumnPropNameInTable="IdMateria_Column" msprop:Generator_UserColumnName="IdMateria " type="xs:int" minOccurs="0" />
-              <xs:element name="TituloBachiller" msprop:Generator_ColumnVarNameInTable="columnTituloBachiller" msprop:Generator_ColumnPropNameInRow="TituloBachiller" msprop:Generator_ColumnPropNameInTable="TituloBachillerColumn" msprop:Generator_UserColumnName="TituloBachiller" minOccurs="0">
+              <xs:element name="TituloBasico" msprop:Generator_ColumnVarNameInTable="columnTituloBasico" msprop:Generator_ColumnPropNameInRow="TituloBasico" msprop:Generator_ColumnPropNameInTable="TituloBasicoColumn" msprop:Generator_UserColumnName="TituloBasico" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="DUI" msprop:Generator_ColumnVarNameInTable="columnDUI" msprop:Generator_ColumnPropNameInRow="DUI" msprop:Generator_ColumnPropNameInTable="DUIColumn" msprop:Generator_UserColumnName="DUI" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="NIT" msprop:Generator_ColumnVarNameInTable="columnNIT" msprop:Generator_ColumnPropNameInRow="NIT" msprop:Generator_ColumnPropNameInTable="NITColumn" msprop:Generator_UserColumnName="NIT" minOccurs="0">
+              <xs:element name="NIE" msprop:Generator_ColumnVarNameInTable="columnNIE" msprop:Generator_ColumnPropNameInRow="NIE" msprop:Generator_ColumnPropNameInTable="NIEColumn" msprop:Generator_UserColumnName="NIE" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
@@ -564,7 +556,7 @@ SELECT [IdMatricula ], IdAlumnos, codEspecialidad, NombreAlumno, codAlumno, [IdI
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="alumnos" msprop:Generator_TableClassName="alumnosDataTable" msprop:Generator_TableVarName="tablealumnos" msprop:Generator_TablePropName="alumnos" msprop:Generator_RowDeletingName="alumnosRowDeleting" msprop:Generator_RowChangingName="alumnosRowChanging" msprop:Generator_RowEvHandlerName="alumnosRowChangeEventHandler" msprop:Generator_RowDeletedName="alumnosRowDeleted" msprop:Generator_UserTableName="alumnos" msprop:Generator_RowChangedName="alumnosRowChanged" msprop:Generator_RowEvArgName="alumnosRowChangeEvent" msprop:Generator_RowClassName="alumnosRow">
+        <xs:element name="alumnos" msprop:Generator_TableClassName="alumnosDataTable" msprop:Generator_TableVarName="tablealumnos" msprop:Generator_RowChangedName="alumnosRowChanged" msprop:Generator_TablePropName="alumnos" msprop:Generator_RowDeletingName="alumnosRowDeleting" msprop:Generator_RowChangingName="alumnosRowChanging" msprop:Generator_RowEvHandlerName="alumnosRowChangeEventHandler" msprop:Generator_RowDeletedName="alumnosRowDeleted" msprop:Generator_RowClassName="alumnosRow" msprop:Generator_UserTableName="alumnos" msprop:Generator_RowEvArgName="alumnosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="codAlumno" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodAlumno" msprop:Generator_ColumnPropNameInRow="codAlumno" msprop:Generator_ColumnPropNameInTable="codAlumnoColumn" msprop:Generator_UserColumnName="codAlumno" type="xs:int" />
@@ -589,14 +581,14 @@ SELECT [IdMatricula ], IdAlumnos, codEspecialidad, NombreAlumno, codAlumno, [IdI
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="codCarrera" msprop:Generator_ColumnVarNameInTable="columncodCarrera" msprop:Generator_ColumnPropNameInRow="codCarrera" msprop:Generator_ColumnPropNameInTable="codCarreraColumn" msprop:Generator_UserColumnName="codCarrera" minOccurs="0">
+              <xs:element name="codNIE" msprop:Generator_ColumnVarNameInTable="columncodNIE" msprop:Generator_ColumnPropNameInRow="codNIE" msprop:Generator_ColumnPropNameInTable="codNIEColumn" msprop:Generator_UserColumnName="codNIE" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="codFacultad" msprop:Generator_ColumnVarNameInTable="columncodFacultad" msprop:Generator_ColumnPropNameInRow="codFacultad" msprop:Generator_ColumnPropNameInTable="codFacultadColumn" msprop:Generator_UserColumnName="codFacultad" minOccurs="0">
+              <xs:element name="codEspecialidad" msprop:Generator_ColumnVarNameInTable="columncodEspecialidad" msprop:Generator_ColumnPropNameInRow="codEspecialidad" msprop:Generator_ColumnPropNameInTable="codEspecialidadColumn" msprop:Generator_UserColumnName="codEspecialidad" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
@@ -614,7 +606,7 @@ SELECT [IdMatricula ], IdAlumnos, codEspecialidad, NombreAlumno, codAlumno, [IdI
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="matricula" msprop:Generator_TableClassName="matriculaDataTable" msprop:Generator_TableVarName="tablematricula" msprop:Generator_TablePropName="matricula" msprop:Generator_RowDeletingName="matriculaRowDeleting" msprop:Generator_RowChangingName="matriculaRowChanging" msprop:Generator_RowEvHandlerName="matriculaRowChangeEventHandler" msprop:Generator_RowDeletedName="matriculaRowDeleted" msprop:Generator_UserTableName="matricula" msprop:Generator_RowChangedName="matriculaRowChanged" msprop:Generator_RowEvArgName="matriculaRowChangeEvent" msprop:Generator_RowClassName="matriculaRow">
+        <xs:element name="matricula" msprop:Generator_TableClassName="matriculaDataTable" msprop:Generator_TableVarName="tablematricula" msprop:Generator_RowChangedName="matriculaRowChanged" msprop:Generator_TablePropName="matricula" msprop:Generator_RowDeletingName="matriculaRowDeleting" msprop:Generator_RowChangingName="matriculaRowChanging" msprop:Generator_RowEvHandlerName="matriculaRowChangeEventHandler" msprop:Generator_RowDeletedName="matriculaRowDeleted" msprop:Generator_RowClassName="matriculaRow" msprop:Generator_UserTableName="matricula" msprop:Generator_RowEvArgName="matriculaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdMatricula_x0020_" msprop:Generator_ColumnVarNameInTable="columnIdMatricula_" msprop:Generator_ColumnPropNameInRow="IdMatricula_" msprop:Generator_ColumnPropNameInTable="IdMatricula_Column" msprop:Generator_UserColumnName="IdMatricula " type="xs:int" />
@@ -679,6 +671,10 @@ SELECT [IdMatricula ], IdAlumnos, codEspecialidad, NombreAlumno, codAlumno, [IdI
       <xs:selector xpath=".//mstns:alumnos" />
       <xs:field xpath="mstns:codAlumno" />
     </xs:unique>
+    <xs:unique name="alumnos_Constraint2" msdata:ConstraintName="Constraint2">
+      <xs:selector xpath=".//mstns:alumnos" />
+      <xs:field xpath="mstns:codNIE" />
+    </xs:unique>
     <xs:unique name="matricula_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:matricula" />
       <xs:field xpath="mstns:IdMatricula_x0020_" />
@@ -691,40 +687,52 @@ SELECT [IdMatricula ], IdAlumnos, codEspecialidad, NombreAlumno, codAlumno, [IdI
       <xs:selector xpath=".//mstns:matricula" />
       <xs:field xpath="mstns:codAlumno" />
     </xs:unique>
-    <xs:keyref name="matricula_alumnos" refer="matricula_Constraint3" msprop:rel_Generator_UserChildTable="alumnos" msprop:rel_Generator_ChildPropName="GetalumnosRows" msprop:rel_Generator_UserRelationName="matricula_alumnos" msprop:rel_Generator_RelationVarName="relationmatricula_alumnos" msprop:rel_Generator_UserParentTable="matricula" msprop:rel_Generator_ParentPropName="matriculaRow" msdata:AcceptRejectRule="Cascade">
+    <xs:unique name="Constraint4">
+      <xs:selector xpath=".//mstns:matricula" />
+      <xs:field xpath="mstns:codEspecialidad" />
+    </xs:unique>
+    <xs:keyref name="FK_matricula_alumnos1" refer="Constraint4" msprop:rel_Generator_UserChildTable="alumnos" msprop:rel_Generator_ChildPropName="GetalumnosRowsByFK_matricula_alumnos1" msprop:rel_Generator_UserRelationName="FK_matricula_alumnos1" msprop:rel_Generator_RelationVarName="relationFK_matricula_alumnos1" msprop:rel_Generator_UserParentTable="matricula" msprop:rel_Generator_ParentPropName="matriculaRowByFK_matricula_alumnos1">
+      <xs:selector xpath=".//mstns:alumnos" />
+      <xs:field xpath="mstns:codEspecialidad" />
+    </xs:keyref>
+    <xs:keyref name="materias_alumnos" refer="Constraint2" msprop:rel_Generator_UserChildTable="alumnos" msprop:rel_Generator_ChildPropName="GetalumnosRowsBymaterias_alumnos" msprop:rel_Generator_UserRelationName="materias_alumnos" msprop:rel_Generator_RelationVarName="relationmaterias_alumnos" msprop:rel_Generator_UserParentTable="materias" msprop:rel_Generator_ParentPropName="materiasRowBymaterias_alumnos" msdata:UpdateRule="None" msdata:DeleteRule="None">
       <xs:selector xpath=".//mstns:alumnos" />
       <xs:field xpath="mstns:codAlumno" />
     </xs:keyref>
-    <xs:keyref name="materias_alumnos1" refer="Constraint1" msprop:rel_Generator_UserChildTable="alumnos" msprop:rel_Generator_ChildPropName="GetalumnosRowsBymaterias_alumnos1" msprop:rel_Generator_UserRelationName="materias_alumnos1" msprop:rel_Generator_ParentPropName="materiasRowBymaterias_alumnos1" msprop:rel_Generator_RelationVarName="relationmaterias_alumnos1" msprop:rel_Generator_UserParentTable="materias" msdata:UpdateRule="None" msdata:DeleteRule="None">
+    <xs:keyref name="materias_alumnos1" refer="Constraint1" msprop:rel_Generator_UserChildTable="alumnos" msprop:rel_Generator_ChildPropName="GetalumnosRowsBymaterias_alumnos1" msprop:rel_Generator_UserRelationName="materias_alumnos1" msprop:rel_Generator_RelationVarName="relationmaterias_alumnos1" msprop:rel_Generator_UserParentTable="materias" msprop:rel_Generator_ParentPropName="materiasRowBymaterias_alumnos1" msdata:UpdateRule="None" msdata:DeleteRule="None">
       <xs:selector xpath=".//mstns:alumnos" />
       <xs:field xpath="mstns:codMateria" />
     </xs:keyref>
-    <xs:keyref name="materias_alumnos" refer="Constraint2" msprop:rel_Generator_UserChildTable="alumnos" msprop:rel_Generator_ChildPropName="GetalumnosRowsBymaterias_alumnos" msprop:rel_Generator_UserRelationName="materias_alumnos" msprop:rel_Generator_ParentPropName="materiasRowBymaterias_alumnos" msprop:rel_Generator_RelationVarName="relationmaterias_alumnos" msprop:rel_Generator_UserParentTable="materias" msdata:UpdateRule="None" msdata:DeleteRule="None">
+    <xs:keyref name="matricula_alumnos" refer="matricula_Constraint3" msprop:rel_Generator_UserChildTable="alumnos" msprop:rel_Generator_ChildPropName="GetalumnosRows" msprop:rel_Generator_UserRelationName="matricula_alumnos" msprop:rel_Generator_ParentPropName="matriculaRow" msprop:rel_Generator_RelationVarName="relationmatricula_alumnos" msprop:rel_Generator_UserParentTable="matricula" msdata:AcceptRejectRule="Cascade">
       <xs:selector xpath=".//mstns:alumnos" />
       <xs:field xpath="mstns:codAlumno" />
     </xs:keyref>
-    <xs:keyref name="FK_inscripcion_matricula" refer="matricula_Constraint2" msprop:rel_Generator_UserChildTable="inscripcion" msprop:rel_Generator_ChildPropName="GetinscripcionRows" msprop:rel_Generator_UserRelationName="FK_inscripcion_matricula" msprop:rel_Generator_RelationVarName="relationFK_inscripcion_matricula" msprop:rel_Generator_UserParentTable="matricula" msprop:rel_Generator_ParentPropName="matriculaRow" msdata:UpdateRule="None" msdata:DeleteRule="None">
+    <xs:keyref name="alumnos_inscripcion" refer="alumnos_Constraint2" msprop:rel_Generator_UserChildTable="inscripcion" msprop:rel_Generator_ChildPropName="GetinscripcionRows" msprop:rel_Generator_UserRelationName="alumnos_inscripcion" msprop:rel_Generator_RelationVarName="relationalumnos_inscripcion" msprop:rel_Generator_UserParentTable="alumnos" msprop:rel_Generator_ParentPropName="alumnosRow" msdata:UpdateRule="None" msdata:DeleteRule="None">
       <xs:selector xpath=".//mstns:inscripcion" />
-      <xs:field xpath="mstns:IdMatricula" />
+      <xs:field xpath="mstns:NIE" />
     </xs:keyref>
-    <xs:keyref name="FK_materias_inscripcion" refer="Constraint3" msprop:rel_Generator_UserChildTable="inscripcion" msprop:rel_Generator_ChildPropName="GetinscripcionRowsByFK_materias_inscripcion" msprop:rel_Generator_UserRelationName="FK_materias_inscripcion" msprop:rel_Generator_ParentPropName="materiasRowByFK_materias_inscripcion" msprop:rel_Generator_RelationVarName="relationFK_materias_inscripcion" msprop:rel_Generator_UserParentTable="materias" msdata:AcceptRejectRule="Cascade">
+    <xs:keyref name="FK_materias_inscripcion" refer="Constraint3" msprop:rel_Generator_UserChildTable="inscripcion" msprop:rel_Generator_ChildPropName="GetinscripcionRowsByFK_materias_inscripcion" msprop:rel_Generator_UserRelationName="FK_materias_inscripcion" msprop:rel_Generator_RelationVarName="relationFK_materias_inscripcion" msprop:rel_Generator_UserParentTable="materias" msprop:rel_Generator_ParentPropName="materiasRowByFK_materias_inscripcion" msdata:AcceptRejectRule="Cascade">
       <xs:selector xpath=".//mstns:inscripcion" />
       <xs:field xpath="mstns:IdInscripcion_x0020_" />
     </xs:keyref>
-    <xs:keyref name="FK_alumnos_nota" refer="alumnos_Constraint1" msprop:rel_Generator_UserChildTable="nota" msprop:rel_Generator_ChildPropName="GetnotaRows" msprop:rel_Generator_UserRelationName="FK_alumnos_nota" msprop:rel_Generator_RelationVarName="relationFK_alumnos_nota" msprop:rel_Generator_UserParentTable="alumnos" msprop:rel_Generator_ParentPropName="alumnosRow">
+    <xs:keyref name="FK_inscripcion_matricula" refer="matricula_Constraint2" msprop:rel_Generator_UserChildTable="inscripcion" msprop:rel_Generator_ChildPropName="GetinscripcionRows" msprop:rel_Generator_UserRelationName="FK_inscripcion_matricula" msprop:rel_Generator_ParentPropName="matriculaRow" msprop:rel_Generator_RelationVarName="relationFK_inscripcion_matricula" msprop:rel_Generator_UserParentTable="matricula" msdata:UpdateRule="None" msdata:DeleteRule="None">
+      <xs:selector xpath=".//mstns:inscripcion" />
+      <xs:field xpath="mstns:IdMatricula" />
+    </xs:keyref>
+    <xs:keyref name="FK_alumnos_nota" refer="alumnos_Constraint1" msprop:rel_Generator_UserChildTable="nota" msprop:rel_Generator_ChildPropName="GetnotaRows" msprop:rel_Generator_UserRelationName="FK_alumnos_nota" msprop:rel_Generator_ParentPropName="alumnosRow" msprop:rel_Generator_RelationVarName="relationFK_alumnos_nota" msprop:rel_Generator_UserParentTable="alumnos">
       <xs:selector xpath=".//mstns:nota" />
       <xs:field xpath="mstns:Alumnocod" />
     </xs:keyref>
-    <xs:keyref name="matricula_materias" refer="matricula_Constraint1" msprop:rel_Generator_UserChildTable="materias" msprop:rel_Generator_ChildPropName="GetmateriasRows" msprop:rel_Generator_UserRelationName="matricula_materias" msprop:rel_Generator_RelationVarName="relationmatricula_materias" msprop:rel_Generator_UserParentTable="matricula" msprop:rel_Generator_ParentPropName="matriculaRow" msdata:UpdateRule="None" msdata:DeleteRule="None">
+    <xs:keyref name="matricula_materias" refer="matricula_Constraint1" msprop:rel_Generator_UserChildTable="materias" msprop:rel_Generator_ChildPropName="GetmateriasRows" msprop:rel_Generator_UserRelationName="matricula_materias" msprop:rel_Generator_ParentPropName="matriculaRow" msprop:rel_Generator_RelationVarName="relationmatricula_materias" msprop:rel_Generator_UserParentTable="matricula" msdata:UpdateRule="None" msdata:DeleteRule="None">
       <xs:selector xpath=".//mstns:materias" />
       <xs:field xpath="mstns:idMateria" />
     </xs:keyref>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_nota_inscripcion" msdata:parent="inscripcion" msdata:child="nota" msdata:parentkey="IdInscripcion_x0020_" msdata:childkey="IdInscripcion_x0020_" msprop:Generator_UserChildTable="nota" msprop:Generator_ChildPropName="GetnotaRows" msprop:Generator_UserRelationName="FK_nota_inscripcion" msprop:Generator_ParentPropName="inscripcionRow" msprop:Generator_RelationVarName="relationFK_nota_inscripcion" msprop:Generator_UserParentTable="inscripcion" />
-      <msdata:Relationship name="materias_inscripcion" msdata:parent="materias" msdata:child="inscripcion" msdata:parentkey="idMateria" msdata:childkey="IdMateria_x0020_" msprop:Generator_UserChildTable="inscripcion" msprop:Generator_ChildPropName="GetinscripcionRows" msprop:Generator_UserRelationName="materias_inscripcion" msprop:Generator_ParentPropName="materiasRow" msprop:Generator_RelationVarName="relationmaterias_inscripcion" msprop:Generator_UserParentTable="materias" />
-      <msdata:Relationship name="FK_matricula_alumnos" msdata:parent="alumnos" msdata:child="matricula" msdata:parentkey="codAlumno" msdata:childkey="codAlumno" msprop:Generator_UserChildTable="matricula" msprop:Generator_ChildPropName="GetmatriculaRows" msprop:Generator_UserRelationName="FK_matricula_alumnos" msprop:Generator_ParentPropName="alumnosRow" msprop:Generator_RelationVarName="relationFK_matricula_alumnos" msprop:Generator_UserParentTable="alumnos" />
+      <msdata:Relationship name="FK_nota_inscripcion" msdata:parent="inscripcion" msdata:child="nota" msdata:parentkey="IdInscripcion_x0020_" msdata:childkey="IdInscripcion_x0020_" msprop:Generator_UserChildTable="nota" msprop:Generator_ChildPropName="GetnotaRows" msprop:Generator_UserRelationName="FK_nota_inscripcion" msprop:Generator_RelationVarName="relationFK_nota_inscripcion" msprop:Generator_UserParentTable="inscripcion" msprop:Generator_ParentPropName="inscripcionRow" />
+      <msdata:Relationship name="materias_inscripcion" msdata:parent="materias" msdata:child="inscripcion" msdata:parentkey="idMateria" msdata:childkey="IdMateria_x0020_" msprop:Generator_UserChildTable="inscripcion" msprop:Generator_ChildPropName="GetinscripcionRows" msprop:Generator_UserRelationName="materias_inscripcion" msprop:Generator_RelationVarName="relationmaterias_inscripcion" msprop:Generator_UserParentTable="materias" msprop:Generator_ParentPropName="materiasRow" />
+      <msdata:Relationship name="FK_matricula_alumnos" msdata:parent="alumnos" msdata:child="matricula" msdata:parentkey="codAlumno" msdata:childkey="codAlumno" msprop:Generator_UserChildTable="matricula" msprop:Generator_ChildPropName="GetmatriculaRows" msprop:Generator_UserRelationName="FK_matricula_alumnos" msprop:Generator_RelationVarName="relationFK_matricula_alumnos" msprop:Generator_UserParentTable="alumnos" msprop:Generator_ParentPropName="alumnosRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
