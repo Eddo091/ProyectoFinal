@@ -40,6 +40,8 @@ namespace ProyectoFinal
         {
             actualizarDs();
             mostrar_datos();
+
+            //
         }
         void actualizarDs()
         {
@@ -191,7 +193,7 @@ namespace ProyectoFinal
 
             }
         }
-
+        //Movilidad 
         private void btnprimero_Click(object sender, EventArgs e)
         {
             posicion = 0;
@@ -235,13 +237,22 @@ namespace ProyectoFinal
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             busqueda_materias frmBuscar = new busqueda_materias();
-            if (frmBuscar._idMateria > 0)
+            frmBuscar.ShowDialog();
+            try
             {
-                posicion = tbl.Rows.IndexOf(tbl.Rows.Find(frmBuscar._idMateria));
-                mostrar_datos();
+                if (frmBuscar._idMateria > 0)
+                {
+                    posicion = tbl.Rows.IndexOf(tbl.Rows.Find(frmBuscar._idMateria));
+                    mostrar_datos();
+                  
+                }
+            } catch
+            {
                 MessageBox.Show("Hecho,pero no hay base",
-               "Error:", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            "Error:", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
+           
         }
         void procesarSQL(String sql)
         {

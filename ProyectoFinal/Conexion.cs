@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data; //Libreria de acceso a datos.
 using System.IO;
 using System.Data.SqlClient;//libreria para conectarse al SQL Server...
-
+using System.Windows.Forms;
 
 namespace ProyectoFinal
 {
@@ -17,7 +17,7 @@ namespace ProyectoFinal
         SqlDataAdapter miAdaptadorDatos = new SqlDataAdapter();//intermediario entre el origen de datos y la aplicacion.
 
         DataSet ds = new DataSet();//copia de la arquitectura de la base de datos en memoria RAM...
-
+        
         public Conexion()
         {
             string cadena_conexion =
@@ -148,9 +148,15 @@ namespace ProyectoFinal
 
         void procesarSQL(String sql)
         {
-            comandoSQL.Connection = miConexion;
-            comandoSQL.CommandText = sql;
-            comandoSQL.ExecuteNonQuery();
+            try {
+                comandoSQL.Connection = miConexion;
+                comandoSQL.CommandText = sql;
+                comandoSQL.ExecuteNonQuery();
+            } catch (Exception ev) {
+                MessageBox.Show( ev.Message, "Problema ", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+
+            }
+            
         }
     }
     

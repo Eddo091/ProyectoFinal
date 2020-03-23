@@ -89,7 +89,7 @@ namespace ProyectoFinal
             }
             else
             {
-                MessageBox.Show("NO hay datos que seleccionar", "Busqueda de Clientes",
+                MessageBox.Show("NO hay datos que seleccionar", "Busqueda de Mater",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

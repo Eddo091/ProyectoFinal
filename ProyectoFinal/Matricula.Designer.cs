@@ -36,6 +36,10 @@
             this.lblcodCarrrer = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.grbMtoMatricula = new System.Windows.Forms.GroupBox();
+            this.btnbuscar = new System.Windows.Forms.Button();
+            this.btneliminar = new System.Windows.Forms.Button();
+            this.btnmodificar = new System.Windows.Forms.Button();
+            this.btnagregar = new System.Windows.Forms.Button();
             this.lblMatricula = new System.Windows.Forms.Label();
             this.grbNavegacionmatricula = new System.Windows.Forms.GroupBox();
             this.lblnregistros = new System.Windows.Forms.Label();
@@ -43,10 +47,6 @@
             this.btnsiguiente = new System.Windows.Forms.Button();
             this.btnanterior = new System.Windows.Forms.Button();
             this.btnprimero = new System.Windows.Forms.Button();
-            this.btnbuscar = new System.Windows.Forms.Button();
-            this.btneliminar = new System.Windows.Forms.Button();
-            this.btnmodificar = new System.Windows.Forms.Button();
-            this.btnagregar = new System.Windows.Forms.Button();
             this.grbDatosMatricula.SuspendLayout();
             this.grbMtoMatricula.SuspendLayout();
             this.grbNavegacionmatricula.SuspendLayout();
@@ -61,6 +61,7 @@
             this.grbDatosMatricula.Controls.Add(this.lblcodCarrrer);
             this.grbDatosMatricula.Controls.Add(this.lblNombre);
             this.grbDatosMatricula.Enabled = false;
+            this.grbDatosMatricula.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.grbDatosMatricula.Location = new System.Drawing.Point(12, 62);
             this.grbDatosMatricula.Name = "grbDatosMatricula";
             this.grbDatosMatricula.Size = new System.Drawing.Size(283, 143);
@@ -78,7 +79,7 @@
             // lblPago
             // 
             this.lblPago.AutoSize = true;
-            this.lblPago.Location = new System.Drawing.Point(6, 28);
+            this.lblPago.Location = new System.Drawing.Point(88, 35);
             this.lblPago.Name = "lblPago";
             this.lblPago.Size = new System.Drawing.Size(35, 13);
             this.lblPago.TabIndex = 6;
@@ -101,7 +102,7 @@
             // lblcodCarrrer
             // 
             this.lblcodCarrrer.AutoSize = true;
-            this.lblcodCarrrer.Location = new System.Drawing.Point(6, 69);
+            this.lblcodCarrrer.Location = new System.Drawing.Point(83, 73);
             this.lblcodCarrrer.Name = "lblcodCarrrer";
             this.lblcodCarrrer.Size = new System.Drawing.Size(40, 13);
             this.lblcodCarrrer.TabIndex = 7;
@@ -110,7 +111,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(6, 107);
+            this.lblNombre.Location = new System.Drawing.Point(25, 107);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(98, 13);
             this.lblNombre.TabIndex = 8;
@@ -122,6 +123,7 @@
             this.grbMtoMatricula.Controls.Add(this.btneliminar);
             this.grbMtoMatricula.Controls.Add(this.btnmodificar);
             this.grbMtoMatricula.Controls.Add(this.btnagregar);
+            this.grbMtoMatricula.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.grbMtoMatricula.Location = new System.Drawing.Point(304, 62);
             this.grbMtoMatricula.Name = "grbMtoMatricula";
             this.grbMtoMatricula.Size = new System.Drawing.Size(266, 100);
@@ -129,9 +131,60 @@
             this.grbMtoMatricula.TabStop = false;
             this.grbMtoMatricula.Text = "Mantenimiento de matricula";
             // 
+            // btnbuscar
+            // 
+            this.btnbuscar.BackgroundImage = global::ProyectoFinal.Properties.Resources.Buscar;
+            this.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbuscar.Location = new System.Drawing.Point(203, 36);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(39, 46);
+            this.btnbuscar.TabIndex = 7;
+            this.btnbuscar.UseVisualStyleBackColor = true;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.BackgroundImage = global::ProyectoFinal.Properties.Resources.Eliminar;
+            this.btneliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btneliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneliminar.Location = new System.Drawing.Point(137, 36);
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.Size = new System.Drawing.Size(46, 46);
+            this.btneliminar.TabIndex = 6;
+            this.btneliminar.UseVisualStyleBackColor = true;
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
+            // 
+            // btnmodificar
+            // 
+            this.btnmodificar.BackgroundImage = global::ProyectoFinal.Properties.Resources.Modificar;
+            this.btnmodificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnmodificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmodificar.Location = new System.Drawing.Point(83, 36);
+            this.btnmodificar.Name = "btnmodificar";
+            this.btnmodificar.Size = new System.Drawing.Size(48, 46);
+            this.btnmodificar.TabIndex = 5;
+            this.btnmodificar.Tag = "modificar";
+            this.btnmodificar.UseVisualStyleBackColor = true;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
+            // 
+            // btnagregar
+            // 
+            this.btnagregar.BackgroundImage = global::ProyectoFinal.Properties.Resources.Agregar;
+            this.btnagregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnagregar.Location = new System.Drawing.Point(24, 36);
+            this.btnagregar.Name = "btnagregar";
+            this.btnagregar.Size = new System.Drawing.Size(53, 46);
+            this.btnagregar.TabIndex = 4;
+            this.btnagregar.Tag = "nuevo";
+            this.btnagregar.UseVisualStyleBackColor = true;
+            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
+            // 
             // lblMatricula
             // 
             this.lblMatricula.AutoSize = true;
+            this.lblMatricula.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblMatricula.Location = new System.Drawing.Point(318, 22);
             this.lblMatricula.Name = "lblMatricula";
             this.lblMatricula.Size = new System.Drawing.Size(35, 13);
@@ -146,6 +199,7 @@
             this.grbNavegacionmatricula.Controls.Add(this.btnsiguiente);
             this.grbNavegacionmatricula.Controls.Add(this.btnanterior);
             this.grbNavegacionmatricula.Controls.Add(this.btnprimero);
+            this.grbNavegacionmatricula.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.grbNavegacionmatricula.Location = new System.Drawing.Point(304, 182);
             this.grbNavegacionmatricula.Name = "grbNavegacionmatricula";
             this.grbNavegacionmatricula.Size = new System.Drawing.Size(266, 88);
@@ -209,56 +263,6 @@
             this.btnprimero.Text = "|<";
             this.btnprimero.UseVisualStyleBackColor = true;
             this.btnprimero.Click += new System.EventHandler(this.btnprimero_Click);
-            // 
-            // btnbuscar
-            // 
-            this.btnbuscar.BackgroundImage = global::ProyectoFinal.Properties.Resources.Buscar;
-            this.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbuscar.Location = new System.Drawing.Point(203, 36);
-            this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(39, 46);
-            this.btnbuscar.TabIndex = 7;
-            this.btnbuscar.UseVisualStyleBackColor = true;
-            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
-            // 
-            // btneliminar
-            // 
-            this.btneliminar.BackgroundImage = global::ProyectoFinal.Properties.Resources.Eliminar;
-            this.btneliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btneliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneliminar.Location = new System.Drawing.Point(137, 36);
-            this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(46, 46);
-            this.btneliminar.TabIndex = 6;
-            this.btneliminar.UseVisualStyleBackColor = true;
-            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
-            // 
-            // btnmodificar
-            // 
-            this.btnmodificar.BackgroundImage = global::ProyectoFinal.Properties.Resources.Modificar;
-            this.btnmodificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnmodificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnmodificar.Location = new System.Drawing.Point(83, 36);
-            this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(48, 46);
-            this.btnmodificar.TabIndex = 5;
-            this.btnmodificar.Tag = "modificar";
-            this.btnmodificar.UseVisualStyleBackColor = true;
-            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
-            // 
-            // btnagregar
-            // 
-            this.btnagregar.BackgroundImage = global::ProyectoFinal.Properties.Resources.Agregar;
-            this.btnagregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnagregar.Location = new System.Drawing.Point(24, 36);
-            this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(53, 46);
-            this.btnagregar.TabIndex = 4;
-            this.btnagregar.Tag = "nuevo";
-            this.btnagregar.UseVisualStyleBackColor = true;
-            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
             // Matricula
             // 

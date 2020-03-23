@@ -80,7 +80,15 @@
       <DependentUpon>busqueda_materias.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion.cs" />
+    <Compile Include="db_academicoDataSet.cs">
+      <DependentUpon>db_academicoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="db_academicoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_academicoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db_academicoDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>db_academicoDataSet.xsd</DependentUpon>
@@ -138,8 +146,8 @@
     </None>
     <None Include="db_academicoDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>db_academicoDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>db_academicoDataSet1.Designer.cs</LastGenOutput>
     </None>
     <None Include="db_academicoDataSet.xss">
       <DependentUpon>db_academicoDataSet.xsd</DependentUpon>

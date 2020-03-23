@@ -149,29 +149,35 @@ namespace ProyectoFinal
 
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            if (btnmodificar.Text == "modificar")
-            {//boton de modificar
-                btnagregar.Tag = "guardar";
-                btnmodificar.Tag = "cancelar";
-                accion = "modificar";
+            try
+            {
+                if (btnmodificar.Text == "modificar")
+                {//boton de modificar
+                    btnagregar.Tag = "guardar";
+                    btnmodificar.Tag = "cancelar";
+                    accion = "modificar";
 
-                controles(false);
+                    controles(false);
 
-                btnagregar.BackgroundImage = Properties.Resources.Guardar;
-                btnmodificar.BackgroundImage = Properties.Resources.Cancelar;
+                    btnagregar.BackgroundImage = Properties.Resources.Guardar;
+                    btnmodificar.BackgroundImage = Properties.Resources.Cancelar;
 
-            }
-            else
-            { //boton de cancelar
-                controles(true);
-                mostrar_datos();
+                }
+                else
+                { //boton de cancelar
+                    controles(true);
+                    mostrar_datos();
 
-                btnagregar.Tag = "nuevo";
-                btnmodificar.Tag = "modificar";
+                    btnagregar.Tag = "nuevo";
+                    btnmodificar.Tag = "modificar";
 
-                btnagregar.BackgroundImage = Properties.Resources.Agregar;
-                btnmodificar.BackgroundImage = Properties.Resources.Modificar;
-            }
+                    btnagregar.BackgroundImage = Properties.Resources.Agregar;
+                    btnmodificar.BackgroundImage = Properties.Resources.Modificar;
+                }
+            } catch (Exception evv) {
+                MessageBox.Show( evv.Message,"Error" ,MessageBoxButtons.OK , MessageBoxIcon.Warning); }
+
+           
         }
 
         private void btneliminar_Click(object sender, EventArgs e)

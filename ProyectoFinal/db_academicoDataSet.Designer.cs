@@ -30,9 +30,13 @@ namespace ProyectoFinal {
         
         private inscripcionDataTable tableinscripcion;
         
+        private alumnosDataTable tablealumnos;
+        
         private global::System.Data.DataRelation relationFK_materias_inscripcion;
         
         private global::System.Data.DataRelation relationFK_nota_inscripcion;
+        
+        private global::System.Data.DataRelation relationmaterias_inscripcion;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -70,6 +74,9 @@ namespace ProyectoFinal {
                 }
                 if ((ds.Tables["inscripcion"] != null)) {
                     base.Tables.Add(new inscripcionDataTable(ds.Tables["inscripcion"]));
+                }
+                if ((ds.Tables["alumnos"] != null)) {
+                    base.Tables.Add(new alumnosDataTable(ds.Tables["alumnos"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -116,6 +123,16 @@ namespace ProyectoFinal {
         public inscripcionDataTable inscripcion {
             get {
                 return this.tableinscripcion;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public alumnosDataTable alumnos {
+            get {
+                return this.tablealumnos;
             }
         }
         
@@ -195,6 +212,9 @@ namespace ProyectoFinal {
                 if ((ds.Tables["inscripcion"] != null)) {
                     base.Tables.Add(new inscripcionDataTable(ds.Tables["inscripcion"]));
                 }
+                if ((ds.Tables["alumnos"] != null)) {
+                    base.Tables.Add(new alumnosDataTable(ds.Tables["alumnos"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -246,8 +266,15 @@ namespace ProyectoFinal {
                     this.tableinscripcion.InitVars();
                 }
             }
+            this.tablealumnos = ((alumnosDataTable)(base.Tables["alumnos"]));
+            if ((initTable == true)) {
+                if ((this.tablealumnos != null)) {
+                    this.tablealumnos.InitVars();
+                }
+            }
             this.relationFK_materias_inscripcion = this.Relations["FK_materias_inscripcion"];
             this.relationFK_nota_inscripcion = this.Relations["FK_nota_inscripcion"];
+            this.relationmaterias_inscripcion = this.Relations["materias_inscripcion"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -264,6 +291,8 @@ namespace ProyectoFinal {
             base.Tables.Add(this.tablenota);
             this.tableinscripcion = new inscripcionDataTable();
             base.Tables.Add(this.tableinscripcion);
+            this.tablealumnos = new alumnosDataTable();
+            base.Tables.Add(this.tablealumnos);
             this.relationFK_materias_inscripcion = new global::System.Data.DataRelation("FK_materias_inscripcion", new global::System.Data.DataColumn[] {
                         this.tableinscripcion.IdInscripcion_Column}, new global::System.Data.DataColumn[] {
                         this.tablematerias.IdInscripcion_Column}, false);
@@ -272,6 +301,10 @@ namespace ProyectoFinal {
                         this.tableinscripcion.IdInscripcion_Column}, new global::System.Data.DataColumn[] {
                         this.tablenota.IdInscripcion_Column}, false);
             this.Relations.Add(this.relationFK_nota_inscripcion);
+            this.relationmaterias_inscripcion = new global::System.Data.DataRelation("materias_inscripcion", new global::System.Data.DataColumn[] {
+                        this.tablematerias.idMateriaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableinscripcion.IdMateria_Column}, false);
+            this.Relations.Add(this.relationmaterias_inscripcion);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -289,6 +322,12 @@ namespace ProyectoFinal {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeinscripcion() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializealumnos() {
             return false;
         }
         
@@ -355,6 +394,9 @@ namespace ProyectoFinal {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void inscripcionRowChangeEventHandler(object sender, inscripcionRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void alumnosRowChangeEventHandler(object sender, alumnosRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1226,15 +1268,18 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public inscripcionRow AddinscripcionRow(int IdInscripcion_, int IdMatricula, int IdMateria_, string TituloBachiller, string DUI, string NIT) {
+            public inscripcionRow AddinscripcionRow(int IdInscripcion_, int IdMatricula, materiasRow parentmateriasRowBymaterias_inscripcion, string TituloBachiller, string DUI, string NIT) {
                 inscripcionRow rowinscripcionRow = ((inscripcionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdInscripcion_,
                         IdMatricula,
-                        IdMateria_,
+                        null,
                         TituloBachiller,
                         DUI,
                         NIT};
+                if ((parentmateriasRowBymaterias_inscripcion != null)) {
+                    columnValuesArray[2] = parentmateriasRowBymaterias_inscripcion[0];
+                }
                 rowinscripcionRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowinscripcionRow);
                 return rowinscripcionRow;
@@ -1380,6 +1425,239 @@ namespace ProyectoFinal {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "inscripcionDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class alumnosDataTable : global::System.Data.TypedTableBase<alumnosRow> {
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public alumnosDataTable() {
+                this.TableName = "alumnos";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal alumnosDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected alumnosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public alumnosRow this[int index] {
+                get {
+                    return ((alumnosRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event alumnosRowChangeEventHandler alumnosRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event alumnosRowChangeEventHandler alumnosRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event alumnosRowChangeEventHandler alumnosRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event alumnosRowChangeEventHandler alumnosRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddalumnosRow(alumnosRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public alumnosRow AddalumnosRow() {
+                alumnosRow rowalumnosRow = ((alumnosRow)(this.NewRow()));
+                object[] columnValuesArray = new object[0];
+                rowalumnosRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowalumnosRow);
+                return rowalumnosRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                alumnosDataTable cln = ((alumnosDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new alumnosDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public alumnosRow NewalumnosRow() {
+                return ((alumnosRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new alumnosRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(alumnosRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.alumnosRowChanged != null)) {
+                    this.alumnosRowChanged(this, new alumnosRowChangeEvent(((alumnosRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.alumnosRowChanging != null)) {
+                    this.alumnosRowChanging(this, new alumnosRowChangeEvent(((alumnosRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.alumnosRowDeleted != null)) {
+                    this.alumnosRowDeleted(this, new alumnosRowChangeEvent(((alumnosRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.alumnosRowDeleting != null)) {
+                    this.alumnosRowDeleting(this, new alumnosRowChangeEvent(((alumnosRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemovealumnosRow(alumnosRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                db_academicoDataSet ds = new db_academicoDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "alumnosDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1650,6 +1928,17 @@ namespace ProyectoFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetIdInscripcion_Null() {
                 this[this.tablematerias.IdInscripcion_Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public inscripcionRow[] GetinscripcionRows() {
+                if ((this.Table.ChildRelations["materias_inscripcion"] == null)) {
+                    return new inscripcionRow[0];
+                }
+                else {
+                    return ((inscripcionRow[])(base.GetChildRows(this.Table.ChildRelations["materias_inscripcion"])));
+                }
             }
         }
         
@@ -1993,6 +2282,17 @@ namespace ProyectoFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public materiasRow materiasRow {
+                get {
+                    return ((materiasRow)(this.GetParentRow(this.Table.ParentRelations["materias_inscripcion"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["materias_inscripcion"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIdMatriculaNull() {
                 return this.IsNull(this.tableinscripcion.IdMatriculaColumn);
             }
@@ -2071,6 +2371,21 @@ namespace ProyectoFinal {
                 else {
                     return ((notaRow[])(base.GetChildRows(this.Table.ChildRelations["FK_nota_inscripcion"])));
                 }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class alumnosRow : global::System.Data.DataRow {
+            
+            private alumnosDataTable tablealumnos;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal alumnosRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablealumnos = ((alumnosDataTable)(this.Table));
             }
         }
         
@@ -2162,6 +2477,40 @@ namespace ProyectoFinal {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public inscripcionRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class alumnosRowChangeEvent : global::System.EventArgs {
+            
+            private alumnosRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public alumnosRowChangeEvent(alumnosRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public alumnosRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3884,6 +4233,15 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(db_academicoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._materiasTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.materias.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._materiasTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._inscripcionTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.inscripcion.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -3902,15 +4260,6 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._materiasTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.materias.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._materiasTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -3921,6 +4270,14 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(db_academicoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._materiasTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.materias.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._materiasTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._inscripcionTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.inscripcion.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -3937,14 +4294,6 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._materiasTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.materias.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._materiasTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -3955,14 +4304,6 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(db_academicoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._materiasTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.materias.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._materiasTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._notaTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.nota.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -3976,6 +4317,14 @@ SELECT [IdInscripcion ], IdMatricula, [IdMateria ], TituloBachiller, DUI, NIT FR
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._inscripcionTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._materiasTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.materias.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._materiasTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

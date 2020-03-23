@@ -32,10 +32,6 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnseleccionar = new System.Windows.Forms.Button();
             this.grdBusquedaAlumnos = new System.Windows.Forms.DataGridView();
-            this.txtbuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.db_academicoDataSet = new ProyectoFinal.db_academicoDataSet();
-            this.dbacademicoDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,15 +39,19 @@
             this.codCarrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codFacultad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codMatricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dbacademicoDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.db_academicoDataSet = new ProyectoFinal.db_academicoDataSet();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdBusquedaAlumnos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db_academicoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbacademicoDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.db_academicoDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btncancelar
             // 
             this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btncancelar.Location = new System.Drawing.Point(619, 339);
+            this.btncancelar.Location = new System.Drawing.Point(667, 339);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(84, 27);
             this.btncancelar.TabIndex = 10;
@@ -62,7 +62,7 @@
             // btnseleccionar
             // 
             this.btnseleccionar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnseleccionar.Location = new System.Drawing.Point(523, 339);
+            this.btnseleccionar.Location = new System.Drawing.Point(571, 339);
             this.btnseleccionar.Name = "btnseleccionar";
             this.btnseleccionar.Size = new System.Drawing.Size(84, 27);
             this.btnseleccionar.TabIndex = 9;
@@ -88,35 +88,8 @@
             this.grdBusquedaAlumnos.Location = new System.Drawing.Point(24, 55);
             this.grdBusquedaAlumnos.Name = "grdBusquedaAlumnos";
             this.grdBusquedaAlumnos.ReadOnly = true;
-            this.grdBusquedaAlumnos.Size = new System.Drawing.Size(671, 265);
+            this.grdBusquedaAlumnos.Size = new System.Drawing.Size(728, 265);
             this.grdBusquedaAlumnos.TabIndex = 8;
-            // 
-            // txtbuscar
-            // 
-            this.txtbuscar.Location = new System.Drawing.Point(78, 19);
-            this.txtbuscar.Name = "txtbuscar";
-            this.txtbuscar.Size = new System.Drawing.Size(617, 20);
-            this.txtbuscar.TabIndex = 7;
-            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "BUSCAR";
-            // 
-            // db_academicoDataSet
-            // 
-            this.db_academicoDataSet.DataSetName = "db_academicoDataSet";
-            this.db_academicoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dbacademicoDataSetBindingSource
-            // 
-            this.dbacademicoDataSetBindingSource.DataSource = this.db_academicoDataSet;
-            this.dbacademicoDataSetBindingSource.Position = 0;
             // 
             // codAlumno
             // 
@@ -167,11 +140,38 @@
             this.codMatricula.Name = "codMatricula";
             this.codMatricula.ReadOnly = true;
             // 
+            // dbacademicoDataSetBindingSource
+            // 
+            this.dbacademicoDataSetBindingSource.DataSource = this.db_academicoDataSet;
+            this.dbacademicoDataSetBindingSource.Position = 0;
+            // 
+            // db_academicoDataSet
+            // 
+            this.db_academicoDataSet.DataSetName = "db_academicoDataSet";
+            this.db_academicoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // txtbuscar
+            // 
+            this.txtbuscar.Location = new System.Drawing.Point(78, 19);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(617, 20);
+            this.txtbuscar.TabIndex = 7;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "BUSCAR";
+            // 
             // busqueda_alumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 383);
+            this.ClientSize = new System.Drawing.Size(765, 383);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnseleccionar);
             this.Controls.Add(this.grdBusquedaAlumnos);
@@ -180,11 +180,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "busqueda_alumnos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "busqueda_alumnos";
+            this.Text = "Busqueda de Alumnos";
             this.Load += new System.EventHandler(this.busqueda_alumnos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdBusquedaAlumnos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db_academicoDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbacademicoDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.db_academicoDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

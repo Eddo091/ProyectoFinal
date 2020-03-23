@@ -44,6 +44,10 @@
             this.lblTelefono = new System.Windows.Forms.Label();
             this.btnMaterias = new System.Windows.Forms.Button();
             this.grbMtoAlumnos = new System.Windows.Forms.GroupBox();
+            this.btnbuscar = new System.Windows.Forms.Button();
+            this.btneliminar = new System.Windows.Forms.Button();
+            this.btnmodificar = new System.Windows.Forms.Button();
+            this.btnagregar = new System.Windows.Forms.Button();
             this.lblcodAlumno = new System.Windows.Forms.Label();
             this.grbNavegacionAlumnos = new System.Windows.Forms.GroupBox();
             this.lblnregistros = new System.Windows.Forms.Label();
@@ -52,10 +56,6 @@
             this.btnanterior = new System.Windows.Forms.Button();
             this.btnprimero = new System.Windows.Forms.Button();
             this.dataSet1 = new System.Data.DataSet();
-            this.btnbuscar = new System.Windows.Forms.Button();
-            this.btneliminar = new System.Windows.Forms.Button();
-            this.btnmodificar = new System.Windows.Forms.Button();
-            this.btnagregar = new System.Windows.Forms.Button();
             this.grbDatosAlumnos.SuspendLayout();
             this.grbMtoAlumnos.SuspendLayout();
             this.grbNavegacionAlumnos.SuspendLayout();
@@ -65,7 +65,7 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(402, 35);
+            this.button1.Location = new System.Drawing.Point(439, 32);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -88,6 +88,7 @@
             this.grbDatosAlumnos.Controls.Add(this.lblDireccion);
             this.grbDatosAlumnos.Controls.Add(this.lblTelefono);
             this.grbDatosAlumnos.Enabled = false;
+            this.grbDatosAlumnos.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.grbDatosAlumnos.Location = new System.Drawing.Point(12, 12);
             this.grbDatosAlumnos.Name = "grbDatosAlumnos";
             this.grbDatosAlumnos.Size = new System.Drawing.Size(283, 255);
@@ -97,7 +98,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(129, 28);
+            this.txtNombre.Location = new System.Drawing.Point(122, 33);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(148, 20);
             this.txtNombre.TabIndex = 1;
@@ -105,7 +106,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(6, 28);
+            this.lblNombre.Location = new System.Drawing.Point(64, 33);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 6;
@@ -113,21 +114,21 @@
             // 
             // txtcodMatricula
             // 
-            this.txtcodMatricula.Location = new System.Drawing.Point(129, 218);
+            this.txtcodMatricula.Location = new System.Drawing.Point(122, 217);
             this.txtcodMatricula.Name = "txtcodMatricula";
             this.txtcodMatricula.Size = new System.Drawing.Size(148, 20);
             this.txtcodMatricula.TabIndex = 6;
             // 
             // txtcodFacultad
             // 
-            this.txtcodFacultad.Location = new System.Drawing.Point(129, 180);
+            this.txtcodFacultad.Location = new System.Drawing.Point(122, 183);
             this.txtcodFacultad.Name = "txtcodFacultad";
             this.txtcodFacultad.Size = new System.Drawing.Size(148, 20);
             this.txtcodFacultad.TabIndex = 5;
             // 
             // txtcodCarrera
             // 
-            this.txtcodCarrera.Location = new System.Drawing.Point(129, 142);
+            this.txtcodCarrera.Location = new System.Drawing.Point(122, 146);
             this.txtcodCarrera.Name = "txtcodCarrera";
             this.txtcodCarrera.Size = new System.Drawing.Size(148, 20);
             this.txtcodCarrera.TabIndex = 4;
@@ -135,7 +136,7 @@
             // lblcodMatricula
             // 
             this.lblcodMatricula.AutoSize = true;
-            this.lblcodMatricula.Location = new System.Drawing.Point(6, 225);
+            this.lblcodMatricula.Location = new System.Drawing.Point(22, 221);
             this.lblcodMatricula.Name = "lblcodMatricula";
             this.lblcodMatricula.Size = new System.Drawing.Size(86, 13);
             this.lblcodMatricula.TabIndex = 11;
@@ -143,7 +144,7 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(129, 104);
+            this.txtTelefono.Location = new System.Drawing.Point(122, 106);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(148, 20);
             this.txtTelefono.TabIndex = 3;
@@ -151,7 +152,7 @@
             // lblcodFacultad
             // 
             this.lblcodFacultad.AutoSize = true;
-            this.lblcodFacultad.Location = new System.Drawing.Point(6, 183);
+            this.lblcodFacultad.Location = new System.Drawing.Point(24, 183);
             this.lblcodFacultad.Name = "lblcodFacultad";
             this.lblcodFacultad.Size = new System.Drawing.Size(84, 13);
             this.lblcodFacultad.TabIndex = 10;
@@ -159,7 +160,7 @@
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(129, 66);
+            this.txtDireccion.Location = new System.Drawing.Point(122, 70);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(148, 20);
             this.txtDireccion.TabIndex = 2;
@@ -167,7 +168,7 @@
             // lblcodCarrera
             // 
             this.lblcodCarrera.AutoSize = true;
-            this.lblcodCarrera.Location = new System.Drawing.Point(6, 149);
+            this.lblcodCarrera.Location = new System.Drawing.Point(31, 149);
             this.lblcodCarrera.Name = "lblcodCarrera";
             this.lblcodCarrera.Size = new System.Drawing.Size(77, 13);
             this.lblcodCarrera.TabIndex = 9;
@@ -176,7 +177,7 @@
             // lblDireccion
             // 
             this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Location = new System.Drawing.Point(6, 69);
+            this.lblDireccion.Location = new System.Drawing.Point(56, 73);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(52, 13);
             this.lblDireccion.TabIndex = 7;
@@ -185,7 +186,7 @@
             // lblTelefono
             // 
             this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(6, 107);
+            this.lblTelefono.Location = new System.Drawing.Point(59, 111);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(49, 13);
             this.lblTelefono.TabIndex = 8;
@@ -194,7 +195,7 @@
             // btnMaterias
             // 
             this.btnMaterias.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnMaterias.Location = new System.Drawing.Point(314, 35);
+            this.btnMaterias.Location = new System.Drawing.Point(351, 32);
             this.btnMaterias.Name = "btnMaterias";
             this.btnMaterias.Size = new System.Drawing.Size(75, 23);
             this.btnMaterias.TabIndex = 7;
@@ -208,17 +209,68 @@
             this.grbMtoAlumnos.Controls.Add(this.btneliminar);
             this.grbMtoAlumnos.Controls.Add(this.btnmodificar);
             this.grbMtoAlumnos.Controls.Add(this.btnagregar);
-            this.grbMtoAlumnos.Location = new System.Drawing.Point(314, 73);
+            this.grbMtoAlumnos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.grbMtoAlumnos.Location = new System.Drawing.Point(311, 61);
             this.grbMtoAlumnos.Name = "grbMtoAlumnos";
             this.grbMtoAlumnos.Size = new System.Drawing.Size(266, 100);
             this.grbMtoAlumnos.TabIndex = 20;
             this.grbMtoAlumnos.TabStop = false;
             this.grbMtoAlumnos.Text = "Mantenimiento de Alumnos";
             // 
+            // btnbuscar
+            // 
+            this.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbuscar.Image = global::ProyectoFinal.Properties.Resources.Buscar;
+            this.btnbuscar.Location = new System.Drawing.Point(164, 36);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(39, 46);
+            this.btnbuscar.TabIndex = 13;
+            this.btnbuscar.UseVisualStyleBackColor = true;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btneliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneliminar.Image = global::ProyectoFinal.Properties.Resources.Eliminar;
+            this.btneliminar.Location = new System.Drawing.Point(119, 36);
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.Size = new System.Drawing.Size(39, 46);
+            this.btneliminar.TabIndex = 12;
+            this.btneliminar.UseVisualStyleBackColor = true;
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
+            // 
+            // btnmodificar
+            // 
+            this.btnmodificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnmodificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmodificar.Image = global::ProyectoFinal.Properties.Resources.Modificar;
+            this.btnmodificar.Location = new System.Drawing.Point(73, 36);
+            this.btnmodificar.Name = "btnmodificar";
+            this.btnmodificar.Size = new System.Drawing.Size(39, 46);
+            this.btnmodificar.TabIndex = 11;
+            this.btnmodificar.Tag = "modificar";
+            this.btnmodificar.UseVisualStyleBackColor = true;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
+            // 
+            // btnagregar
+            // 
+            this.btnagregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnagregar.Image = global::ProyectoFinal.Properties.Resources.Agregar;
+            this.btnagregar.Location = new System.Drawing.Point(28, 36);
+            this.btnagregar.Name = "btnagregar";
+            this.btnagregar.Size = new System.Drawing.Size(39, 46);
+            this.btnagregar.TabIndex = 10;
+            this.btnagregar.Tag = "nuevo";
+            this.btnagregar.UseVisualStyleBackColor = true;
+            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
+            // 
             // lblcodAlumno
             // 
             this.lblcodAlumno.AutoSize = true;
-            this.lblcodAlumno.Location = new System.Drawing.Point(311, 9);
+            this.lblcodAlumno.Location = new System.Drawing.Point(332, 12);
             this.lblcodAlumno.Name = "lblcodAlumno";
             this.lblcodAlumno.Size = new System.Drawing.Size(35, 13);
             this.lblcodAlumno.TabIndex = 19;
@@ -232,7 +284,8 @@
             this.grbNavegacionAlumnos.Controls.Add(this.btnsiguiente);
             this.grbNavegacionAlumnos.Controls.Add(this.btnanterior);
             this.grbNavegacionAlumnos.Controls.Add(this.btnprimero);
-            this.grbNavegacionAlumnos.Location = new System.Drawing.Point(314, 179);
+            this.grbNavegacionAlumnos.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.grbNavegacionAlumnos.Location = new System.Drawing.Point(311, 176);
             this.grbNavegacionAlumnos.Name = "grbNavegacionAlumnos";
             this.grbNavegacionAlumnos.Size = new System.Drawing.Size(266, 88);
             this.grbNavegacionAlumnos.TabIndex = 18;
@@ -299,56 +352,6 @@
             // dataSet1
             // 
             this.dataSet1.DataSetName = "DataSet";
-            // 
-            // btnbuscar
-            // 
-            this.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbuscar.Image = global::ProyectoFinal.Properties.Resources.Buscar;
-            this.btnbuscar.Location = new System.Drawing.Point(164, 36);
-            this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(39, 46);
-            this.btnbuscar.TabIndex = 13;
-            this.btnbuscar.UseVisualStyleBackColor = true;
-            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
-            // 
-            // btneliminar
-            // 
-            this.btneliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btneliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneliminar.Image = global::ProyectoFinal.Properties.Resources.Eliminar;
-            this.btneliminar.Location = new System.Drawing.Point(119, 36);
-            this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(39, 46);
-            this.btneliminar.TabIndex = 12;
-            this.btneliminar.UseVisualStyleBackColor = true;
-            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
-            // 
-            // btnmodificar
-            // 
-            this.btnmodificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnmodificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnmodificar.Image = global::ProyectoFinal.Properties.Resources.Modificar;
-            this.btnmodificar.Location = new System.Drawing.Point(73, 36);
-            this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(39, 46);
-            this.btnmodificar.TabIndex = 11;
-            this.btnmodificar.Tag = "modificar";
-            this.btnmodificar.UseVisualStyleBackColor = true;
-            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
-            // 
-            // btnagregar
-            // 
-            this.btnagregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnagregar.Image = global::ProyectoFinal.Properties.Resources.Agregar;
-            this.btnagregar.Location = new System.Drawing.Point(28, 36);
-            this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(39, 46);
-            this.btnagregar.TabIndex = 10;
-            this.btnagregar.Tag = "nuevo";
-            this.btnagregar.UseVisualStyleBackColor = true;
-            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
             // Form1
             // 
